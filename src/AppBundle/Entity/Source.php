@@ -63,11 +63,30 @@ class Source
      */
     private $content;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Literature")
+     * @ORM\JoinTable(name="sources_literatures",
+     *      joinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id")}
+     *      )
+     */
+    private $literatures;
+
+
+    public function __construct()
+    {
+        $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -90,7 +109,7 @@ class Source
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -113,7 +132,7 @@ class Source
     /**
      * Get traveler
      *
-     * @return string 
+     * @return string
      */
     public function getTraveler()
     {
@@ -136,7 +155,7 @@ class Source
     /**
      * Get year
      *
-     * @return string 
+     * @return string
      */
     public function getYear()
     {
@@ -159,7 +178,7 @@ class Source
     /**
      * Get editions
      *
-     * @return string 
+     * @return string
      */
     public function getEditions()
     {
@@ -182,7 +201,7 @@ class Source
     /**
      * Get itinerary
      *
-     * @return string 
+     * @return string
      */
     public function getItinerary()
     {
@@ -205,10 +224,43 @@ class Source
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Add literatures
+     *
+     * @param \AppBundle\Entity\Literature $literatures
+     * @return Source
+     */
+    public function addLiterature(\AppBundle\Entity\Literature $literatures)
+    {
+        $this->literatures[] = $literatures;
+
+        return $this;
+    }
+
+    /**
+     * Remove literatures
+     *
+     * @param \AppBundle\Entity\Literature $literatures
+     */
+    public function removeLiterature(\AppBundle\Entity\Literature $literatures)
+    {
+        $this->literatures->removeElement($literatures);
+    }
+
+    /**
+     * Get literatures
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLiteratures()
+    {
+        return $this->literatures;
     }
 }

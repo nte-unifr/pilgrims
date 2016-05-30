@@ -29,10 +29,15 @@ class MemorialFunctionsKeyword
     private $title;
 
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +60,7 @@ class MemorialFunctionsKeyword
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {

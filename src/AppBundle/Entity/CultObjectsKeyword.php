@@ -29,10 +29,14 @@ class CultObjectsKeyword
     private $title;
 
 
+    public function __toString() {
+        return $this->getTitle();
+    }
+    
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -55,7 +59,7 @@ class CultObjectsKeyword
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {

@@ -119,11 +119,75 @@ class Site
      */
     private $additionalData;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="MemorialFunctionsKeyword")
+     * @ORM\JoinTable(name="sites_memorialfunctionskeywords",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="memorialfunctionskeyword_id", referencedColumnName="id")}
+     *      )
+     */
+    private $memorialFunctionsKeywords;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="HistoricalSource")
+     * @ORM\JoinTable(name="sites_historicalsources",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="historicalsource_id", referencedColumnName="id")}
+     *      )
+     */
+    private $historicalSources;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Toponym")
+     * @ORM\JoinTable(name="sites_toponyms",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="toponym_id", referencedColumnName="id")}
+     *      )
+     */
+    private $toponyms;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="CultObjectsKeyword")
+     * @ORM\JoinTable(name="sites_cultobjectskeywords",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="cultobjectskeyword_id", referencedColumnName="id")}
+     *      )
+     */
+    private $cultObjectsKeywords;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Source")
+     * @ORM\JoinTable(name="sites_sources",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")}
+     *      )
+     */
+    private $sources;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Literature")
+     * @ORM\JoinTable(name="sites_literatures",
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id")}
+     *      )
+     */
+    private $literatures;
+
+
+    public function __construct() {
+        $this->memorialFunctionsKeywords = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->historicalSources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->toponyms = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->cultObjectsKeywords = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->sources = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -146,7 +210,7 @@ class Site
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -169,7 +233,7 @@ class Site
     /**
      * Get explanations
      *
-     * @return string 
+     * @return string
      */
     public function getExplanations()
     {
@@ -192,7 +256,7 @@ class Site
     /**
      * Get sourcesQuotation
      *
-     * @return string 
+     * @return string
      */
     public function getSourcesQuotation()
     {
@@ -215,7 +279,7 @@ class Site
     /**
      * Get latitude
      *
-     * @return float 
+     * @return float
      */
     public function getLatitude()
     {
@@ -238,7 +302,7 @@ class Site
     /**
      * Get longitude
      *
-     * @return float 
+     * @return float
      */
     public function getLongitude()
     {
@@ -261,7 +325,7 @@ class Site
     /**
      * Get history
      *
-     * @return string 
+     * @return string
      */
     public function getHistory()
     {
@@ -284,7 +348,7 @@ class Site
     /**
      * Get archaeologicalData
      *
-     * @return string 
+     * @return string
      */
     public function getArchaeologicalData()
     {
@@ -307,7 +371,7 @@ class Site
     /**
      * Get environmentalContext
      *
-     * @return string 
+     * @return string
      */
     public function getEnvironmentalContext()
     {
@@ -330,7 +394,7 @@ class Site
     /**
      * Get memorialFunctions
      *
-     * @return string 
+     * @return string
      */
     public function getMemorialFunctions()
     {
@@ -353,7 +417,7 @@ class Site
     /**
      * Get liturgicalHabits
      *
-     * @return string 
+     * @return string
      */
     public function getLiturgicalHabits()
     {
@@ -376,7 +440,7 @@ class Site
     /**
      * Get culticPhenomena
      *
-     * @return string 
+     * @return string
      */
     public function getCulticPhenomena()
     {
@@ -399,7 +463,7 @@ class Site
     /**
      * Get culticPhenomenaCollection
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getCulticPhenomenaCollection()
     {
@@ -422,7 +486,7 @@ class Site
     /**
      * Get cultObjects
      *
-     * @return string 
+     * @return string
      */
     public function getCultObjects()
     {
@@ -445,10 +509,208 @@ class Site
     /**
      * Get additionalData
      *
-     * @return string 
+     * @return string
      */
     public function getAdditionalData()
     {
         return $this->additionalData;
+    }
+
+    /**
+     * Add memorialFunctionsKeywords
+     *
+     * @param \AppBundle\Entity\MemorialFunctionsKeyword $memorialFunctionsKeywords
+     * @return Site
+     */
+    public function addMemorialFunctionsKeyword(\AppBundle\Entity\MemorialFunctionsKeyword $memorialFunctionsKeywords)
+    {
+        $this->memorialFunctionsKeywords[] = $memorialFunctionsKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Remove memorialFunctionsKeywords
+     *
+     * @param \AppBundle\Entity\MemorialFunctionsKeyword $memorialFunctionsKeywords
+     */
+    public function removeMemorialFunctionsKeyword(\AppBundle\Entity\MemorialFunctionsKeyword $memorialFunctionsKeywords)
+    {
+        $this->memorialFunctionsKeywords->removeElement($memorialFunctionsKeywords);
+    }
+
+    /**
+     * Get memorialFunctionsKeywords
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getMemorialFunctionsKeywords()
+    {
+        return $this->memorialFunctionsKeywords;
+    }
+
+    /**
+     * Add historicalSources
+     *
+     * @param \AppBundle\Entity\HistoricalSource $historicalSources
+     * @return Site
+     */
+    public function addHistoricalSource(\AppBundle\Entity\HistoricalSource $historicalSources)
+    {
+        $this->historicalSources[] = $historicalSources;
+
+        return $this;
+    }
+
+    /**
+     * Remove historicalSources
+     *
+     * @param \AppBundle\Entity\HistoricalSource $historicalSources
+     */
+    public function removeHistoricalSource(\AppBundle\Entity\HistoricalSource $historicalSources)
+    {
+        $this->historicalSources->removeElement($historicalSources);
+    }
+
+    /**
+     * Get historicalSources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHistoricalSources()
+    {
+        return $this->historicalSources;
+    }
+
+    /**
+     * Add toponyms
+     *
+     * @param \AppBundle\Entity\Toponym $toponyms
+     * @return Site
+     */
+    public function addToponym(\AppBundle\Entity\Toponym $toponyms)
+    {
+        $this->toponyms[] = $toponyms;
+
+        return $this;
+    }
+
+    /**
+     * Remove toponyms
+     *
+     * @param \AppBundle\Entity\Toponym $toponyms
+     */
+    public function removeToponym(\AppBundle\Entity\Toponym $toponyms)
+    {
+        $this->toponyms->removeElement($toponyms);
+    }
+
+    /**
+     * Get toponyms
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getToponyms()
+    {
+        return $this->toponyms;
+    }
+
+    /**
+     * Add cultObjectsKeywords
+     *
+     * @param \AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords
+     * @return Site
+     */
+    public function addCultObjectsKeyword(\AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords)
+    {
+        $this->cultObjectsKeywords[] = $cultObjectsKeywords;
+
+        return $this;
+    }
+
+    /**
+     * Remove cultObjectsKeywords
+     *
+     * @param \AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords
+     */
+    public function removeCultObjectsKeyword(\AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords)
+    {
+        $this->cultObjectsKeywords->removeElement($cultObjectsKeywords);
+    }
+
+    /**
+     * Get cultObjectsKeywords
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCultObjectsKeywords()
+    {
+        return $this->cultObjectsKeywords;
+    }
+
+    /**
+     * Add sources
+     *
+     * @param \AppBundle\Entity\Source $sources
+     * @return Site
+     */
+    public function addSource(\AppBundle\Entity\Source $sources)
+    {
+        $this->sources[] = $sources;
+
+        return $this;
+    }
+
+    /**
+     * Remove sources
+     *
+     * @param \AppBundle\Entity\Source $sources
+     */
+    public function removeSource(\AppBundle\Entity\Source $sources)
+    {
+        $this->sources->removeElement($sources);
+    }
+
+    /**
+     * Get sources
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSources()
+    {
+        return $this->sources;
+    }
+
+    /**
+     * Add literatures
+     *
+     * @param \AppBundle\Entity\Literature $literatures
+     * @return Site
+     */
+    public function addLiterature(\AppBundle\Entity\Literature $literatures)
+    {
+        $this->literatures[] = $literatures;
+
+        return $this;
+    }
+
+    /**
+     * Remove literatures
+     *
+     * @param \AppBundle\Entity\Literature $literatures
+     */
+    public function removeLiterature(\AppBundle\Entity\Literature $literatures)
+    {
+        $this->literatures->removeElement($literatures);
+    }
+
+    /**
+     * Get literatures
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLiteratures()
+    {
+        return $this->literatures;
     }
 }

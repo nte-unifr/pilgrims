@@ -36,10 +36,15 @@ class HistoricalSource
     private $content;
 
 
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -62,7 +67,7 @@ class HistoricalSource
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -85,7 +90,7 @@ class HistoricalSource
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
