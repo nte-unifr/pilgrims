@@ -7,6 +7,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.site_images: /uploads/images/sites
 
 framework:
     #esi:             ~
@@ -78,6 +79,29 @@ easy_admin:
             label: 'Sites'
             list:
                 title: '%%entity_label%%'
+                fields:
+                    - 'title'
+                    - 'explanations'
+                    - 'latitude'
+                    - 'longitude'
+                    - { property: 'imageName', type: 'image', base_path: %app.path.site_images% }
+            form:
+                fields:
+                    - 'title'
+                    - 'explanations'
+                    - 'sourcesQuotation'
+                    - 'latitude'
+                    - 'longitude'
+                    - 'history'
+                    - 'archaeologicalData'
+                    - 'environmentalContext'
+                    - 'memorialFunctions'
+                    - 'liturgicalHabits'
+                    - 'culticPhenomena'
+                    - 'culticPhenomenaCollection'
+                    - 'cultObjects'
+                    - 'additionalData'
+                    - { property: 'imageFile', type: 'vich_image' }
         CultObjectsKeyword:
             class: AppBundle\Entity\CultObjectsKeyword
             label: 'Cult Objects Kw'
@@ -108,3 +132,12 @@ easy_admin:
             label: 'Toponyms'
             list:
                 title: '%%entity_label%%'
+
+# VichUploader config
+vich_uploader:
+    db_driver: orm
+    mappings:
+        site_image:
+            uri_prefix: %app.path.site_images%
+            upload_destination: %kernel.root_dir%/../web/uploads/images/sites
+            namer: vich_uploader.namer_uniqid
