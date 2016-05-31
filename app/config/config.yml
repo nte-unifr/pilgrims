@@ -107,31 +107,48 @@ easy_admin:
             label: 'Cult Objects Kw'
             list:
                 title: 'Cult Objects Keywords'
+                fields:
+                    - 'title'
         HistoricalSource:
             class: AppBundle\Entity\HistoricalSource
             label: 'Historical Sources'
             list:
                 title: '%%entity_label%%'
+                fields:
+                    - 'title'
+                    - 'content'
         Literature:
             class: AppBundle\Entity\Literature
             label: 'Literatures'
             list:
                 title: '%%entity_label%%'
+                fields:
+                    - 'title'
+                    - 'content'
         MemorialFunctionsKeyword:
             class: AppBundle\Entity\MemorialFunctionsKeyword
             label: 'Memorial Functions Kw'
             list:
                 title: 'Memorial Functions Keywords'
+                fields:
+                    - 'title'
         Source:
             class: AppBundle\Entity\Source
             label: 'Sources'
             list:
                 title: '%%entity_label%%'
+                fields:
+                    - 'title'
+                    - 'traveler'
+                    - 'year'
+                    - 'literatures'
         Toponym:
             class: AppBundle\Entity\Toponym
             label: 'Toponyms'
             list:
                 title: '%%entity_label%%'
+                fields:
+                    - 'title'
 
 # VichUploader config
 vich_uploader:
@@ -141,3 +158,10 @@ vich_uploader:
             uri_prefix: %app.path.site_images%
             upload_destination: %kernel.root_dir%/../web/uploads/images/sites
             namer: vich_uploader.namer_uniqid
+
+# Assetic config
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: false
+    filters:
+        cssrewrite: ~

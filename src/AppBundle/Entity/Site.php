@@ -193,11 +193,11 @@ class Site
     private $imageName = null;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      *
      * @var \DateTime
      */
-    private $updatedAt;
+    private $updatedAt = null;
 
 
     public function __construct() {
@@ -208,7 +208,6 @@ class Site
         $this->sources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
 
     /**
      * Get id
