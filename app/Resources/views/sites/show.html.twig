@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ site.title }}{% endblock %}
+
+{% block body %}
+    <h1>{{ site.title }}</h1>
+    <hr>
+    <div class="row">
+        <div class="col-sm-4">
+            <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
+              <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
+            </a>
+            <dl class="dl-horizontal">
+              <dt><i class="fa fa-location-arrow" aria-hidden="true"></i></dt>
+              <dd><strong>{{ site.latitude }}, {{ site.longitude }}</strong></dd>
+            </dl>
+            <p class="text-center">
+                <a class="btn btn-info" href="{{ path('sites_index') }}">Back to listing</a>
+            </p>
+        </div>
+        <div class="col-sm-8">
+              <h3>Explanations</h3>
+              <p>{{ site.explanations }}</p>
+              <h3>Sources quotation</h3>
+              <p>{{ site.sourcesQuotation }}</p>
+              <h3>History</h3>
+              <p>{{ site.history }}</p>
+              <h3>Archaeological data</h3>
+              <p>{{ site.archaeologicalData }}</p>
+              <h3>Environmental context</h3>
+              <p>{{ site.environmentalContext }}</p>
+              <h3>Memorial functions</h3>
+              <p>{{ site.memorialFunctions }}</p>
+              <h3>Liturgical habits</h3>
+              <p>{{ site.liturgicalHabits }}</p>
+              <h3>Cultic phenomena</h3>
+              <p>{{ site.culticPhenomena }}</p>
+              <h3>Cult objects</h3>
+              <p>{{ site.cultObjects }}</p>
+              <h3>Additional data</h3>
+              <p>{{ site.additionalData }}</p>
+        </div>
+    </div>
+{% endblock %}

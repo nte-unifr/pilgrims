@@ -21,12 +21,15 @@ class SiteController extends Controller
     }
 
     /**
-     * @Route("/show")
+     * @Route("/sites/{id}", requirements={"id" = "\d+"}, defaults={"id" = 1}, name="sites_show")
      */
-    public function showAction()
+    public function showAction($id)
     {
+        $repository = $this->getDoctrine()->getRepository("AppBundle:Site");
+        $site = $repository->find($id);
+
         return $this->render('sites/show.html.twig', array(
-            // ...
+            'site' => $site
         ));
     }
 
