@@ -96,12 +96,18 @@ easy_admin:
                     - 'archaeologicalData'
                     - 'environmentalContext'
                     - 'memorialFunctions'
+                    - 'memorialFunctionsKeywords'
                     - 'liturgicalHabits'
                     - 'culticPhenomena'
                     - 'culticPhenomenaCollection'
                     - 'cultObjects'
+                    - 'cultObjectsKeywords'
                     - 'additionalData'
                     - { property: 'imageFile', type: 'vich_image' }
+                    - 'sources'
+                    - 'toponyms'
+                    - 'historicalSources'
+                    - 'literatures'
         CultObjectsKeyword:
             class: AppBundle\Entity\CultObjectsKeyword
             label: 'Cult Objects Kw'

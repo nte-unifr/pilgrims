@@ -21,7 +21,7 @@ class SiteController extends Controller
     }
 
     /**
-     * @Route("/sites/{id}", requirements={"id" = "\d+"}, defaults={"id" = 1}, name="sites_show")
+     * @Route("/sites/{id}", requirements={"id" = "\d+"}, name="sites_show")
      */
     public function showAction($id)
     {

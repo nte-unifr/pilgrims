@@ -80,7 +80,7 @@ class Source
 
     public function __toString()
     {
-        return $this->getTitle();
+        return $this->getTitle().' - '.$this->getYear();
     }
 
     /**
@@ -257,7 +257,7 @@ class Source
     /**
      * Get literatures
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getLiteratures()
     {

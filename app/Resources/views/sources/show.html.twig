@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ source.title }}{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-xs-12">
+            <ol class="breadcrumb">
+              <li><a href="{{ path('sites_index') }}">Sites</a></li>
+              <li><a href="{{ path('sites_show', {'id': site.id}) }}">{{ site.title }}</a></li>
+              <li class="active">{{ source.title }}</li>
+            </ol>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>{{ source.title }}</h1>
+        </div>
+    </div>
+    <div class="row grid">
+        {% include '_element.html.twig' with {'title': 'Traveler', 'element': source.traveler } %}
+        {% include '_element.html.twig' with {'title': 'Year', 'element': source.year } %}
+        {% include '_element.html.twig' with {'title': 'Editions', 'element': source.editions } %}
+        {% include '_element.html.twig' with {'title': 'Itinerary', 'element': source.itinerary } %}
+        {% include '_element.html.twig' with {'title': 'Excerpt', 'element': source.content } %}
+        {% include '_literatures.html.twig' with {'element': source } %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+{% endblock %}
