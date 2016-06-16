@@ -3,33 +3,34 @@
 {% block title %}Sites{% endblock %}
 
 {% block body %}
+  <div id="sites">
     <h1>Sites <small>{{ sites|length }}</small></h1>
     <hr>
     <div class="grid row">
-        {% for site in sites %}
-            <div class="grid-item col-sm-6 col-md-4">
-                <div class="thumbnail">
-                    <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="image-popup"><img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" ></a>
-                    <div class="caption">
-                        <h3>{{ site.title }}</h3>
-                        <p>{{ site.explanations }}</p>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <i class="fa fa-location-arrow" aria-hidden="true"></i> <strong>{{ site.latitude }}</strong>, <strong>{{ site.longitude }}</strong>
-                            </div>
-                            <div class="col-sm-6 text-right">
-                                <a href="{{ path('sites_show', {'id': site.id}) }}" class="btn btn-info">Details</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      {% for site in sites %}
+      <div class="grid-item col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="image-popup"><img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" ></a>
+          <div class="caption">
+            <h3>{{ site.title }}</h3>
+            <p>{{ site.explanations }}</p>
+            <div class="row">
+              <div class="col-sm-6">
+                <i class="fa fa-location-arrow" aria-hidden="true"></i> <strong>{{ site.latitude }}</strong>, <strong>{{ site.longitude }}</strong>
+              </div>
+              <div class="col-sm-6 text-right">
+                <a href="{{ path('sites_show', {'id': site.id}) }}" class="btn btn-info">Details</a>
+              </div>
             </div>
-        {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  {{ parent() }}
+  <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
 {% endblock %}

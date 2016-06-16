@@ -3,96 +3,97 @@
 {% block title %}{{ site.title }}{% endblock %}
 
 {% block body %}
+  <div id="site">
     <div class="row">
-        <div class="col-xs-12">
-            <ol class="breadcrumb">
-              <li><a href="{{ path('sites_index') }}">Sites</a></li>
-              <li class="active">{{ site.title }}</li>
-            </ol>
-        </div>
+      <div class="col-xs-12">
+        <ol class="breadcrumb">
+          <li><a href="{{ path('sites_index') }}">Sites</a></li>
+          <li class="active">{{ site.title }}</li>
+        </ol>
+      </div>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <h1>{{ site.title }} <small><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</small></h1>
-        </div>
-        <div class="col-xs-12">
-            {% if site.toponyms is not empty %}
-                <p class="well">
-                    {% for toponym in site.toponyms %}
-                        <i class="fa fa-tag" aria-hidden="true"></i> {{ toponym.title }}
-                    {% endfor %}
-                </p>
-            {% endif %}
-        </div>
+      <div class="col-xs-12">
+        <h1>{{ site.title }} <small><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</small></h1>
+      </div>
+      <div class="col-xs-12">
+        {% if site.toponyms is not empty %}
+        <p class="well">
+          {% for toponym in site.toponyms %}
+          <i class="fa fa-tag" aria-hidden="true"></i> {{ toponym.title }}
+          {% endfor %}
+        </p>
+        {% endif %}
+      </div>
     </div>
     <div class="row">
-        <div class="col-sm-6">
-            <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
-              <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
-            </a>
-        </div>
-        <div class="col-sm-6">
-            <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
-              <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
-            </a>
-        </div>
+      <div id="image" class="col-sm-6">
+        <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
+          <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
+        </a>
+      </div>
+      <div class="col-sm-6">
+        <div id="gmap" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}"></div>
+      </div>
     </div>
     <div class="row grid">
-        {% include '_element.html.twig' with {'title': 'Explanations', 'element': site.explanations } %}
-        {% include '_element.html.twig' with {'title': 'History', 'element': site.history } %}
-        {% include '_element.html.twig' with {'title': 'Archaeological data', 'element': site.archaeologicalData } %}
-        {% include '_element.html.twig' with {'title': 'Environmental context', 'element': site.environmentalContext } %}
-        <div class="col-sm-6 grid-item">
-            <h3>Memorial functions</h3>
-            <p>{{ site.memorialFunctions }}</p>
-            {% if site.memorialFunctionsKeywords is not empty %}
-                <p>
-                    {% for memorialFunctionsKeyword in site.memorialFunctionsKeywords %}
-                        <i class="fa fa-tag" aria-hidden="true"></i> {{ memorialFunctionsKeyword.title }}
-                    {% endfor %}
-                </p>
-            {% endif %}
-        </div>
-        {% include '_element.html.twig' with {'title': 'Liturgical habits', 'element': site.liturgicalHabits } %}
-        {% include '_element.html.twig' with {'title': 'Cultic phenomena', 'element': site.culticPhenomena } %}
-        <div class="col-sm-6 grid-item">
-            <h3>Cult objects</h3>
-            <p>{{ site.cultObjects }}</p>
-            {% if site.cultObjectsKeywords is not empty %}
-                <p>
-                    {% for cultObjectsKeyword in site.cultObjectsKeywords %}
-                        <i class="fa fa-tag" aria-hidden="true"></i> {{ cultObjectsKeyword.title }}
-                    {% endfor %}
-                </p>
-            {% endif %}
-        </div>
-        {% include '_element.html.twig' with {'title': 'Additional data', 'element': site.additionalData } %}
-        <div class="col-sm-6 grid-item">
-            <h3>Sources</h3>
-            <blockquote>
-              <p>{{ site.sourcesQuotation }}</p>
-            </blockquote>
-            <ul class="fa-ul">
-                {% for source in site.sources %}
-                    <li><a href="{{ path('sources_show', {'id': source.id, 'site_id': site.id}) }}"><i class="fa-li fa fa-book"></i>{{ source.title }}</a></li>
-                {% endfor %}
-            </ul>
-        </div>
-        <div class="col-sm-6 grid-item">
-            <h3>Historical sources</h3>
-            <ul class="fa-ul">
-                {% for historicalSource in site.historicalSources %}
-                    <li><a data-toggle="modal" data-target="#historicalSourcesModal{{ historicalSource.id }}" class="pointer"><i class="fa-li fa fa-book"></i>{{ historicalSource.title }}</a></li>
-                    {% include 'sites/historicalSources_modal.html.twig' %}
-                {% endfor %}
-            </ul>
-        </div>
-        {% include '_literatures.html.twig' with {'element': site } %}
+      {% include '_element.html.twig' with {'title': 'Explanations', 'element': site.explanations } %}
+      {% include '_element.html.twig' with {'title': 'History', 'element': site.history } %}
+      {% include '_element.html.twig' with {'title': 'Archaeological data', 'element': site.archaeologicalData } %}
+      {% include '_element.html.twig' with {'title': 'Environmental context', 'element': site.environmentalContext } %}
+      <div class="col-sm-6 grid-item">
+        <h3>Memorial functions</h3>
+        <p>{{ site.memorialFunctions }}</p>
+        {% if site.memorialFunctionsKeywords is not empty %}
+        <p>
+          {% for memorialFunctionsKeyword in site.memorialFunctionsKeywords %}
+          <i class="fa fa-tag" aria-hidden="true"></i> {{ memorialFunctionsKeyword.title }}
+          {% endfor %}
+        </p>
+        {% endif %}
+      </div>
+      {% include '_element.html.twig' with {'title': 'Liturgical habits', 'element': site.liturgicalHabits } %}
+      {% include '_element.html.twig' with {'title': 'Cultic phenomena', 'element': site.culticPhenomena } %}
+      <div class="col-sm-6 grid-item">
+        <h3>Cult objects</h3>
+        <p>{{ site.cultObjects }}</p>
+        {% if site.cultObjectsKeywords is not empty %}
+        <p>
+          {% for cultObjectsKeyword in site.cultObjectsKeywords %}
+          <i class="fa fa-tag" aria-hidden="true"></i> {{ cultObjectsKeyword.title }}
+          {% endfor %}
+        </p>
+        {% endif %}
+      </div>
+      {% include '_element.html.twig' with {'title': 'Additional data', 'element': site.additionalData } %}
+      <div class="col-sm-6 grid-item">
+        <h3>Sources</h3>
+        <blockquote>
+          <p>{{ site.sourcesQuotation }}</p>
+        </blockquote>
+        <ul class="fa-ul">
+          {% for source in site.sources %}
+          <li><a href="{{ path('sources_show', {'id': source.id, 'site_id': site.id}) }}"><i class="fa-li fa fa-book"></i>{{ source.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="col-sm-6 grid-item">
+        <h3>Historical sources</h3>
+        <ul class="fa-ul">
+          {% for historicalSource in site.historicalSources %}
+          <li><a data-toggle="modal" data-target="#historicalSourcesModal{{ historicalSource.id }}" class="pointer"><i class="fa-li fa fa-book"></i>{{ historicalSource.title }}</a></li>
+          {% include 'sites/historicalSources_modal.html.twig' %}
+          {% endfor %}
+        </ul>
+      </div>
+      {% include '_literatures.html.twig' with {'element': site } %}
     </div>
+  </div>
 {% endblock %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
-    <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  {{ parent() }}
+  <script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
+  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHoXNJQewWtqxZs1NUWIOXUOjvUG936RM"></script>
 {% endblock %}

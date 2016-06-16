@@ -80,10 +80,14 @@
 
         {% block javascripts %}
             <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+            <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
             {% javascripts
                 "js/bootstrap.min.js"
                 "js/jquery.magnific-popup.min.js"
-                "js/pilgrims.js"
+                "js/magnificPopup.js"
+                "js/masonry.js"
+                "js/sites_index.js"
+                "js/sites_show.js"
                 output="js/compiled/app.js" %}
                 <script src="{{ asset_url }}"></script>
             {% endjavascripts %}
