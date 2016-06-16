@@ -14,9 +14,11 @@ class SiteController extends Controller
     {
         $repository = $this->getDoctrine()->getRepository("AppBundle:Site");
         $sites = $repository->findAll();
+        $remote = $_SERVER['REMOTE_USER'];
 
         return $this->render('sites/index.html.twig', array(
-            'sites' => $sites
+            'sites' => $sites,
+            'remote' => $remote
         ));
     }
 

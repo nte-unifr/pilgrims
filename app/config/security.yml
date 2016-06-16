@@ -7,7 +7,7 @@ security:
         in_memory:
             memory:
                 users:
-                    - { name: 'DOMAIN\login', roles: [ 'ROLE_USER' ] }
+                    - { name: 'DOMAIN\deilloal', roles: [ 'ROLE_USER' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
