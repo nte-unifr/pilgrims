@@ -5,7 +5,9 @@ security:
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    - { name: 'DOMAIN\login', roles: [ 'ROLE_USER' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -16,3 +18,4 @@ security:
         admin:
             pattern: ^/admin
             remote_user:
+                provider: in_memory
