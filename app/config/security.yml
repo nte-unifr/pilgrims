@@ -7,7 +7,7 @@ security:
         in_memory:
             memory:
                 users:
-                    - { name: 'DOMAIN\deilloal', roles: [ 'ROLE_USER' ] }
+                    - { name: '378257@unifr.ch', roles: [ 'ROLE_USER' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
