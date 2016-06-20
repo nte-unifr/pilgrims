@@ -18,6 +18,3 @@ security:
             pattern: ^/admin
             remote_user:
                 provider: in_memory
-
-    access_control:
-        - { path: ^/admin, roles: ROLE_USER }
