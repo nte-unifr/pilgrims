@@ -4,17 +4,27 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory:
-                users:
-                    - { name: '378257@unifr.ch', roles: [ 'ROLE_USER' ] }
+        # in_memory:
+        #     memory:
+        #         users:
+        #             - { name: '378257@unifr.ch', roles: [ 'ROLE_USER' ] }
+        unifr_ldap:
+            ldap:
+                service: ldap
+                base_dn: dc=unifr,dc=ch
+                search_dn: 'ou=people,ou=uni fribourg,dc=unifr,dc=ch'
+                search_password: Kr?4vP9a5
+                default_roles: ROLE_USER
+                uid_key: NTEadmin
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        admin:
+
+        main:
             pattern: ^/admin
-            remote_user:
-                provider: in_memory
+            http_basic_ldap:
+                service: ldap
+                dn_string: 'uid={username},dc=unifr,dc=ch'
