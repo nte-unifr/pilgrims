@@ -12,10 +12,10 @@ security:
             ldap:
                 service: ldap
                 base_dn: 'ou=people,ou=uni fribourg,dc=unifr,dc=ch'
-                search_dn: 'ou=people,ou=uni fribourg,dc=unifr,dc=ch'
+                search_dn: 'cn=NTEadmin,dc=unifr,dc=ch'
                 search_password: Kr?4vP9a5
                 default_roles: ROLE_USER
-                uid_key: NTEadmin
+                uid_key: uid
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
