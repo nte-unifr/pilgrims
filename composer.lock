@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28f316d852ad52c0875c99ccd94bac00",
-    "content-hash": "27023a82698d2e4ea66198fd0daba7c8",
+    "hash": "c2fe1716e5096bddf6523fad5bb033d1",
+    "content-hash": "416368b64dccbb3d8524197d16c25640",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1070,6 +1070,49 @@
                 "minification"
             ],
             "time": "2015-11-12 13:51:40"
+        },
+        {
+            "name": "kuleuven/shibboleth-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rmoreas/ShibbolethBundle.git",
+                "reference": "9c1d734f4434cf597204118ca9b3b042247c172e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rmoreas/ShibbolethBundle/zipball/9c1d734f4434cf597204118ca9b3b042247c172e",
+                "reference": "9c1d734f4434cf597204118ca9b3b042247c172e",
+                "shasum": ""
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "KULeuven\\ShibbolethBundle\\": ""
+                }
+            },
+            "license": [
+                "LGPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Ronny Moreas"
+                },
+                {
+                    "name": "Bert Van Gelder"
+                }
+            ],
+            "description": "Symfony2 authentication provider for Shibboleth",
+            "keywords": [
+                "authentication",
+                "security",
+                "shibboleth"
+            ],
+            "support": {
+                "source": "https://github.com/rmoreas/ShibbolethBundle/tree/master",
+                "issues": "https://github.com/rmoreas/ShibbolethBundle/issues"
+            },
+            "time": "2015-10-12 10:50:15"
         },
         {
             "name": "monolog/monolog",
@@ -2642,7 +2685,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kuleuven/shibboleth-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

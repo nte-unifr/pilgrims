@@ -1,23 +1,18 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-    providers:
-        unifr:
-            ldap:
-                service: ldap
-                base_dn: dc=unifr,dc=ch
-                search_dn: cn=NTEadmin,ou=people,ou=uni fribourg,dc=unifr,dc=ch'
-                search_password: Kr?4vP9a5
-                default_roles: ROLE_USER
-                uid_key: uid
-    firewalls:
-        # disables authentication for assets and the profiler
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
-        admin:
-            provider: unifr
-            pattern: ^/admin
-            http_basic_ldap:
-                service: ldap
-                dn_string: cn={username},ou=people,ou=uni fribourg,dc=unifr,dc=ch
+  providers:
+    in_memory:
+      memory: ~
+  firewalls:
+    # disables authentication for assets and the profiler
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    admin:
+      pattern: ^/admin
+      shibboleth: ~
+      logout:
+        path: /admin/logout
+        target: /
+        success_handler: security.logout.handler.shibboleth
