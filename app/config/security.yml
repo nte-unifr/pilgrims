@@ -20,3 +20,5 @@ security:
             remote_user:
                 provider: in_memory
             access_denied_url: /
+        main:
+            anonymous: ~
