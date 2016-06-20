@@ -1,13 +1,7 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
-
-    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        # in_memory:
-        #     memory:
-        #         users:
-        #             - { name: '378257@unifr.ch', roles: [ 'ROLE_USER' ] }
         unifr_ldap:
             ldap:
                 service: ldap
@@ -16,13 +10,11 @@ security:
                 search_password: Kr?4vP9a5
                 default_roles: ROLE_USER
                 uid_key: uid
-
     firewalls:
-        # disables authentication for assets and the profiler, adapt it according to your needs
+        # disables authentication for assets and the profiler
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
         main:
             pattern: ^/admin
             http_basic_ldap:
