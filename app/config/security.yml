@@ -7,7 +7,7 @@ security:
         in_memory:
             memory:
                 users:
-                    - { name: '***REMOVED***', roles: [ 'ROLE_USER' ] }
+                    - { name: '736273@unifr.ch', roles: [ 'ROLE_USER' ] }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -19,3 +19,4 @@ security:
             pattern: ^/admin
             remote_user:
                 provider: in_memory
+            access_denied_url: /
