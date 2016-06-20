@@ -173,4 +173,5 @@ assetic:
         cssrewrite: ~
 
 # Shibboleth config
-shibboleth: ~
+shibboleth:
+  use_headers: false
