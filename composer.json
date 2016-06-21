@@ -23,8 +23,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "javiereguiluz/easyadmin-bundle": "^1.12",
         "vich/uploader-bundle": "^0.14.0",
-        "symfony/assetic-bundle": "^2.8",
-        "kuleuven/shibboleth-bundle": "dev-master"
+        "symfony/assetic-bundle": "^2.8"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
@@ -61,11 +60,5 @@
         "incenteev-parameters": {
             "file": "app/config/parameters.yml"
         }
-    },
-    "repositories": [
-        {
-          "type": "vcs",
-          "url": "git@github.com:rmoreas/ShibbolethBundle.git"
-        }
-    ]
+    }
 }

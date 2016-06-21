@@ -2,8 +2,11 @@
 # http://symfony.com/doc/current/book/security.html
 security:
   providers:
-    in_memory:
-      memory: ~
+    shib:
+      memory:
+        users:
+          378257@unifr.ch:
+            roles: 'ROLE_ADMIN'
   firewalls:
     # disables authentication for assets and the profiler
     dev:
@@ -11,8 +14,12 @@ security:
       security: false
     admin:
       pattern: ^/admin
-      shibboleth: ~
+      remote_user:
+        provider: shib
+        user: REMOTE_USER
+      form_login:
+        login_path: https://elearning.unifr.ch/Shibboleth.sso/Login
       logout:
         path: /admin/logout
-        target: /
-        success_handler: security.logout.handler.shibboleth
+        target: https://elearning.unifr.ch/Shibboleth.sso/Logout
+        invalidate_session: true

@@ -171,6 +171,3 @@ assetic:
     use_controller: false
     filters:
         cssrewrite: ~
-
-# Shibboleth config
-shibboleth: ~
