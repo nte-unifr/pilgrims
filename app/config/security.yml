@@ -9,7 +9,7 @@ security:
             roles: 'ROLE_ADMIN'
   firewalls:
     admin:
-      pattern: ^/admin
+      pattern: ^/admin/
       remote_user:
         provider: shib
         user: REMOTE_USER
