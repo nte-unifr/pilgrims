@@ -5,7 +5,7 @@ security:
     shib:
       memory:
         users:
-          378257@unifr.ch:
+            name: '378257@unifr.ch'
             roles: 'ROLE_ADMIN'
   firewalls:
     admin:
