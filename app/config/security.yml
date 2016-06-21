@@ -8,10 +8,6 @@ security:
           378257@unifr.ch:
             roles: 'ROLE_ADMIN'
   firewalls:
-    # disables authentication for assets and the profiler
-    dev:
-      pattern: ^/(_(profiler|wdt)|css|images|js)/
-      security: false
     admin:
       pattern: ^/admin
       remote_user:
@@ -19,7 +15,12 @@ security:
         user: REMOTE_USER
       form_login:
         login_path: https://elearning.unifr.ch/Shibboleth.sso/Login
+        check_path: /admin/login_check
       logout:
         path: /admin/logout
         target: https://elearning.unifr.ch/Shibboleth.sso/Logout
         invalidate_session: true
+    # disables authentication for assets and the profiler
+    dev:
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
