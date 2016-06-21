@@ -9,10 +9,14 @@ security:
             roles: 'ROLE_ADMIN'
   firewalls:
     admin:
-      pattern: ^/admin/
+      pattern: ^/admin
       remote_user:
         provider: shib
         user: REMOTE_USER
+      form_login:
+        login_path: https://elearning.unifr.ch/Shibboleth.sso/Login?target=https://elearning.unifr.ch/pilgrims/admin
+        check_path: /admin
+      anonymous: true
     # disables authentication for assets and the profiler
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
