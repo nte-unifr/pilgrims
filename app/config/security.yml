@@ -11,7 +11,11 @@ security:
       pattern: ^/admin
       remote_user:
         provider: shib
+      anonymous: true
     # disables authentication for assets and the profiler
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
+  access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
