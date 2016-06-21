@@ -11,7 +11,6 @@ security:
       pattern: ^/admin
       remote_user:
         provider: shib
-        user: REMOTE_USER
       anonymous: true
     # disables authentication for assets and the profiler
     dev:
