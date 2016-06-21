@@ -13,6 +13,9 @@ security:
       remote_user:
         provider: shib
         user: REMOTE_USER
+      form_login:
+        login_path: https://elearning.unifr.ch/Shibboleth.sso/Login
+        check_path: /admin
     # disables authentication for assets and the profiler
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
