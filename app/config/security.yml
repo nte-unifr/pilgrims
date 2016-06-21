@@ -5,7 +5,9 @@ security:
     shib:
       memory:
         users:
-            - { name: '378257@unifr.ch', roles: ['ROLE_ADMIN'] }
+            ***REMOVED***:
+              name: '378257@unifr.ch'
+              roles: ['ROLE_ADMIN']
   firewalls:
     admin:
       pattern: ^/admin
