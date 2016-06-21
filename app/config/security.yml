@@ -11,7 +11,6 @@ security:
       pattern: ^/admin
       remote_user:
         provider: shib
-      anonymous: ~
     # disables authentication for assets and the profiler
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
