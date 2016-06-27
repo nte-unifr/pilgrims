@@ -2,5 +2,12 @@
     <div class="col-sm-6 grid-item">
         <h3>{{ title }}</h3>
         <p>{{ element }}</p>
+        {% if keywords is defined and keywords is not empty %}
+          <p>
+            {% for keyword in keywords %}
+              <i class="fa fa-tag" aria-hidden="true"></i> {{ keyword.title }}
+            {% endfor %}
+          </p>
+        {% endif %}
     </div>
 {% endif %}
