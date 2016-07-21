@@ -39,4 +39,4 @@ liip_imagine:
   loaders:
         default:
             filesystem:
-                web_root: %kernel.root_dir%/../web/hello # %kernel.root_dir%/../web
+                data_root: %kernel.root_dir%/../web/hello # %kernel.root_dir%/../web
