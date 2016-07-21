@@ -36,3 +36,6 @@ monolog:
 
 assetic:
     use_controller: true
+
+parameters:
+    app.path.full.site_images: %app.path.site_images

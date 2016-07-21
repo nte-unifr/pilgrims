@@ -83,7 +83,7 @@ easy_admin:
                     - 'explanations'
                     - 'latitude'
                     - 'longitude'
-                    - { property: 'imageName', type: 'image', base_path: %app.path.site_images% }
+                    - { property: 'imageName', type: 'image', base_path: %app.path.full.site_images% }
             form:
                 fields:
                     - 'title'
@@ -160,7 +160,7 @@ vich_uploader:
     db_driver: orm
     mappings:
         site_image:
-            uri_prefix: %app.path.site_images%
+            uri_prefix: %app.path.full.site_images%
             upload_destination: %kernel.root_dir%/../web%app.path.site_images%
             namer: vich_uploader.namer_uniqid
 
