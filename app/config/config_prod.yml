@@ -26,8 +26,3 @@ monolog:
             level: debug
         console:
             type:  console
-
-vich_uploader:
-    mappings:
-        site_image:
-            upload_destination: %kernel.root_dir%/../web/pilgrims%app.path.site_images%
