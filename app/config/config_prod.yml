@@ -34,9 +34,3 @@ vich_uploader:
     mappings:
         site_image:
             uri_prefix: /pilgrims%app.path.site_images%
-
-liip_imagine:
-  loaders:
-        default:
-            filesystem:
-                data_root: %kernel.root_dir%/../web/hello # %kernel.root_dir%/../web
