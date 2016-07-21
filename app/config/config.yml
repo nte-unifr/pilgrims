@@ -161,7 +161,7 @@ vich_uploader:
     mappings:
         site_image:
             uri_prefix: %app.path.site_images%
-            upload_destination: %kernel.root_dir%/../web/uploads/images/sites
+            upload_destination: %kernel.root_dir%/../web%app.path.site_images%
             namer: vich_uploader.namer_uniqid
 
 # Assetic config

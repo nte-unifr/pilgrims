@@ -30,4 +30,4 @@ monolog:
 vich_uploader:
     mappings:
         site_image:
-            uri_prefix: pilgrims%app.path.site_images%
+            upload_destination: %kernel.root_dir%/../web/pilgrims%app.path.site_images%
