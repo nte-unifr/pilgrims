@@ -33,4 +33,4 @@ vich_uploader:
             uri_prefix: /pilgrims%app.path.site_images%
 
 parameters:
-    app.path.full.site_images: /pilgrims%app.path.site_images
+    app.path.full.site_images: /pilgrims%app.path.site_images%
