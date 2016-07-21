@@ -27,5 +27,7 @@ monolog:
         console:
             type:  console
 
-parameters:
-    uri_prefix: /pilgrims%app.path.site_images%
+vich_uploader:
+    mappings:
+        site_image:
+            uri_prefix: /pilgrims%app.path.site_images%
