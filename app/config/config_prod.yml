@@ -36,7 +36,7 @@ vich_uploader:
             uri_prefix: /pilgrims%app.path.site_images%
 
 liip_imagine:
-  resolvers:
+  loaders:
         default:
-            web_path:
+            filesystem:
                 web_root: %kernel.root_dir%/../web/hello # %kernel.root_dir%/../web
