@@ -28,4 +28,4 @@ monolog:
             type:  console
 
 parameters:
-    app.path.site_images: /pilgrims/uploads/images/sites
+    uri_prefix: /pilgrims%app.path.site_images%
