@@ -26,3 +26,6 @@ monolog:
             level: debug
         console:
             type:  console
+
+parameters:
+    app.path.site_images: /pilgrims/uploads/images/sites
