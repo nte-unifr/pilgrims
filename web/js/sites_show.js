@@ -30,11 +30,15 @@ $(document).ready(function () {
     // do some stuff when images are loaded
     var photo = $('#image')
     photo.imagesLoaded().progress(function () {
-      initMap($('#gmap'))
+      if ($('#gmap').length) {
+        initMap($('#gmap'))
+      }
     })
   }
 })
 
 window.onresize = function (event) {
-  resizeMap()
+  if ($('#gmap').length) {
+    resizeMap()
+  }
 }

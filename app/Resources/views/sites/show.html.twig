@@ -28,12 +28,16 @@
     </div>
     <div class="row">
       <div id="image" class="col-sm-6">
-        <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
-          <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
-        </a>
+        {% if site.imageName is not empty %}
+          <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
+            <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
+          </a>
+        {% endif %}
       </div>
       <div class="col-sm-6">
-        <div id="gmap" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}"></div>
+        {% if site.latitude is not empty and site.longitude is not empty %}
+          <div id="gmap" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}"></div>
+        {% endif %}
       </div>
     </div>
     <div class="row grid">
