@@ -8,6 +8,13 @@ security:
           - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
           - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
           - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
+          - { name: '***REMOVED***', roles: 'ROLE_ADMIN' }
   firewalls:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
