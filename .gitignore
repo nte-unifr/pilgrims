@@ -21,3 +21,5 @@
 /lib/capistrano/*
 /.bundle/*
 /log
+
+.DS_Store
