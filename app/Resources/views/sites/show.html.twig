@@ -41,14 +41,13 @@
       </div>
     </div>
     <div class="row grid">
-      {% include '_element.html.twig' with { 'title': 'Explanations', 'element': site.explanations } %}
+      {% include '_element.html.twig' with { 'title': 'Explanations', 'element': site.historicalNames } %}
       {% include '_element.html.twig' with { 'title': 'History', 'element': site.history } %}
       {% include '_element.html.twig' with { 'title': 'Archaeological data', 'element': site.archaeologicalData } %}
       {% include '_element.html.twig' with { 'title': 'Environmental context', 'element': site.environmentalContext } %}
       {% include '_element.html.twig' with { 'title': 'Memorial functions', 'element': site.memorialFunctions, 'keywords': site.memorialFunctionsKeywords } %}
       {% include '_element.html.twig' with { 'title': 'Liturgical habits', 'element': site.liturgicalHabits } %}
-      {% include '_element.html.twig' with { 'title': 'Cultic phenomena', 'element': site.culticPhenomena } %}
-      {% include '_element.html.twig' with { 'title': 'Cult objects', 'element': site.cultObjects, 'keywords': site.cultObjectsKeywords } %}
+      {% include '_element.html.twig' with { 'title': 'Cult objects', 'element': '', 'keywords': site.culticPhenomenaKeywords } %}
       {% include '_element.html.twig' with {'title': 'Additional data', 'element': site.additionalData } %}
       <div class="col-sm-6 grid-item">
         <h3>Sources</h3>
@@ -57,7 +56,7 @@
         </blockquote>
         <ul class="fa-ul">
           {% for source in site.sources %}
-          <li><a href="{{ path('sources_show', {'id': source.id, 'site_id': site.id}) }}"><i class="fa-li fa fa-book"></i>{{ source.title }}</a></li>
+            <li><a href="{{ path('sources_show', {'id': source.id, 'site_id': site.id}) }}"><i class="fa-li fa fa-book"></i>{{ source.__toString }}</a></li>
           {% endfor %}
         </ul>
       </div>

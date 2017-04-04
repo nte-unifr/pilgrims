@@ -1,7 +1,7 @@
 {% if element is not empty %}
     <div class="col-sm-6 grid-item">
         <h3>{{ title }}</h3>
-        <p>{{ element }}</p>
+        <p>{{ element | nl2br }}</p>
         {% if keywords is defined and keywords is not empty %}
           <p>
             {% for keyword in keywords %}

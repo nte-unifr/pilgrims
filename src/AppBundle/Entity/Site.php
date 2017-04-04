@@ -34,9 +34,9 @@ class Site
     /**
      * @var string
      *
-     * @ORM\Column(name="explanations", type="text", nullable=true)
+     * @ORM\Column(name="historical_names", type="text", nullable=true)
      */
-    private $explanations;
+    private $historicalNames;
 
     /**
      * @var string
@@ -102,20 +102,6 @@ class Site
     private $culticPhenomena;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="cultic_phenomena_collection", type="boolean")
-     */
-    private $culticPhenomenaCollection;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="cult_objects", type="text", nullable=true)
-     */
-    private $cultObjects;
-
-    /**
      * @var string
      *
      * @ORM\Column(name="additional_data", type="text", nullable=true)
@@ -124,6 +110,7 @@ class Site
 
     /**
      * @ORM\ManyToMany(targetEntity="MemorialFunctionsKeyword")
+     * @ORM\OrderBy({"title" = "ASC"})
      * @ORM\JoinTable(name="sites_memorialfunctionskeywords",
      *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="memorialfunctionskeyword_id", referencedColumnName="id")}
@@ -150,13 +137,13 @@ class Site
     private $toponyms;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CultObjectsKeyword")
-     * @ORM\JoinTable(name="sites_cultobjectskeywords",
+     * @ORM\ManyToMany(targetEntity="CulticPhenomenaKeyword")
+     * @ORM\JoinTable(name="sites_culticphenomenakeywords",
      *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="cultobjectskeyword_id", referencedColumnName="id")}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="culticphenomenakeyword_id", referencedColumnName="id")}
      *      )
      */
-    private $cultObjectsKeywords;
+    private $culticPhenomenaKeywords;
 
     /**
      * @ORM\ManyToMany(targetEntity="Source")
@@ -169,6 +156,7 @@ class Site
 
     /**
      * @ORM\ManyToMany(targetEntity="Literature")
+     * @ORM\OrderBy({"title" = "asc"})
      * @ORM\JoinTable(name="sites_literatures",
      *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id")}
@@ -204,7 +192,7 @@ class Site
         $this->memorialFunctionsKeywords = new \Doctrine\Common\Collections\ArrayCollection();
         $this->historicalSources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->toponyms = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->cultObjectsKeywords = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->culticPhenomenaKeywords = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
     }
@@ -243,26 +231,26 @@ class Site
     }
 
     /**
-     * Set explanations
+     * Set historicalNames
      *
-     * @param string $explanations
+     * @param string $historicalNames
      * @return Site
      */
-    public function setExplanations($explanations)
+    public function setHistoricalNames($historicalNames)
     {
-        $this->explanations = $explanations;
+        $this->historicalNames = $historicalNames;
 
         return $this;
     }
 
     /**
-     * Get explanations
+     * Get historicalNames
      *
      * @return string
      */
-    public function getExplanations()
+    public function getHistoricalNames()
     {
-        return $this->explanations;
+        return $this->historicalNames;
     }
 
     /**
@@ -473,52 +461,6 @@ class Site
     }
 
     /**
-     * Set culticPhenomenaCollection
-     *
-     * @param boolean $culticPhenomenaCollection
-     * @return Site
-     */
-    public function setCulticPhenomenaCollection($culticPhenomenaCollection)
-    {
-        $this->culticPhenomenaCollection = $culticPhenomenaCollection;
-
-        return $this;
-    }
-
-    /**
-     * Get culticPhenomenaCollection
-     *
-     * @return boolean
-     */
-    public function getCulticPhenomenaCollection()
-    {
-        return $this->culticPhenomenaCollection;
-    }
-
-    /**
-     * Set cultObjects
-     *
-     * @param string $cultObjects
-     * @return Site
-     */
-    public function setCultObjects($cultObjects)
-    {
-        $this->cultObjects = $cultObjects;
-
-        return $this;
-    }
-
-    /**
-     * Get cultObjects
-     *
-     * @return string
-     */
-    public function getCultObjects()
-    {
-        return $this->cultObjects;
-    }
-
-    /**
      * Set additionalData
      *
      * @param string $additionalData
@@ -641,36 +583,36 @@ class Site
     }
 
     /**
-     * Add cultObjectsKeywords
+     * Add culticPhenomenaKeywords
      *
-     * @param \AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords
+     * @param \AppBundle\Entity\CulticPhenomenaKeyword $culticPhenomenaKeywords
      * @return Site
      */
-    public function addCultObjectsKeyword(\AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords)
+    public function addCulticPhenomenaKeyword(\AppBundle\Entity\CulticPhenomenaKeyword $culticPhenomenaKeywords)
     {
-        $this->cultObjectsKeywords[] = $cultObjectsKeywords;
+        $this->culticPhenomenaKeywords[] = $culticPhenomenaKeywords;
 
         return $this;
     }
 
     /**
-     * Remove cultObjectsKeywords
+     * Remove culticPhenomenaKeywords
      *
-     * @param \AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords
+     * @param \AppBundle\Entity\CulticPhenomenaKeyword $culticPhenomenaKeywords
      */
-    public function removeCultObjectsKeyword(\AppBundle\Entity\CultObjectsKeyword $cultObjectsKeywords)
+    public function removeCulticPhenomenaKeyword(\AppBundle\Entity\CulticPhenomenaKeyword $culticPhenomenaKeywords)
     {
-        $this->cultObjectsKeywords->removeElement($cultObjectsKeywords);
+        $this->culticPhenomenaKeywords->removeElement($culticPhenomenaKeywords);
     }
 
     /**
-     * Get cultObjectsKeywords
+     * Get culticPhenomenaKeywords
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCultObjectsKeywords()
+    public function getCulticPhenomenaKeywords()
     {
-        return $this->cultObjectsKeywords;
+        return $this->culticPhenomenaKeywords;
     }
 
     /**

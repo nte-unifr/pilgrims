@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * CultObjectsKeyword
+ * CulticPhenomenaKeyword
  *
- * @ORM\Table(name="cult_objects_keyword")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\CultObjectsKeywordRepository")
+ * @ORM\Table(name="cultic_phenomena_keyword")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CulticPhenomenaKeywordRepository")
  */
-class CultObjectsKeyword
+class CulticPhenomenaKeyword
 {
     /**
      * @var int

@@ -72,46 +72,50 @@ easy_admin:
         max_results: 30
     design:
         brand_color: '#00134a'
+        form_theme: 'vertical'
     entities:
         Site:
             class: AppBundle\Entity\Site
             label: 'Sites'
             list:
                 title: '%%entity_label%%'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
-                    - 'explanations'
                     - 'latitude'
                     - 'longitude'
                     - { property: 'imageName', type: 'image', base_path: %app.path.full.site_images% }
             form:
                 fields:
+                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
                     - 'title'
-                    - 'explanations'
+                    - 'historicalNames'
+                    - 'sources'
                     - 'sourcesQuotation'
-                    - 'latitude'
-                    - 'longitude'
+                    - 'historicalSources'
                     - 'history'
                     - 'archaeologicalData'
                     - 'environmentalContext'
                     - 'memorialFunctions'
-                    - 'memorialFunctionsKeywords'
                     - 'liturgicalHabits'
                     - 'culticPhenomena'
-                    - 'culticPhenomenaCollection'
-                    - 'cultObjects'
-                    - 'cultObjectsKeywords'
                     - 'additionalData'
-                    - { property: 'imageFile', type: 'vich_image' }
-                    - 'sources'
+                    - { property: 'literatures', label: 'Literature' }
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Localisation' }
                     - 'toponyms'
-                    - 'historicalSources'
-                    - 'literatures'
-        CultObjectsKeyword:
-            class: AppBundle\Entity\CultObjectsKeyword
-            label: 'Cult Objects Kw'
+                    - 'latitude'
+                    - 'longitude'
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Keywords' }
+                    - 'culticPhenomenaKeywords'
+                    - 'memorialFunctionsKeywords'
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Image' }
+                    - { property: 'imageFile', type: 'vich_image' }
+        CulticPhenomenaKeyword:
+            class: AppBundle\Entity\CulticPhenomenaKeyword
+            label: 'Cultic Phenomena Kw'
             list:
-                title: 'Cult Objects Keywords'
+                title: 'Cultic Phenomena Keywords'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
         HistoricalSource:
@@ -119,14 +123,16 @@ easy_admin:
             label: 'Historical Sources'
             list:
                 title: '%%entity_label%%'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
                     - 'content'
         Literature:
             class: AppBundle\Entity\Literature
-            label: 'Literatures'
+            label: 'Literature'
             list:
                 title: '%%entity_label%%'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
                     - 'content'
@@ -135,6 +141,7 @@ easy_admin:
             label: 'Memorial Functions Kw'
             list:
                 title: 'Memorial Functions Keywords'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
         Source:
@@ -142,16 +149,28 @@ easy_admin:
             label: 'Sources'
             list:
                 title: '%%entity_label%%'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
                     - 'traveler'
                     - 'year'
-                    - 'literatures'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
+                    - 'title'
+                    - 'editions'
+                    - 'itinerary'
+                    - 'excerpts'
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Metadata' }
+                    - 'traveler'
+                    - 'year'
+                    - { property: 'literatures', label: 'Literature' }
         Toponym:
             class: AppBundle\Entity\Toponym
             label: 'Toponyms'
             list:
                 title: '%%entity_label%%'
+                sort: ['title', 'ASC']
                 fields:
                     - 'title'
 

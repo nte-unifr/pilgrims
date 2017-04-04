@@ -22,7 +22,7 @@
         {% include '_element.html.twig' with { 'title': 'Year', 'element': source.year } %}
         {% include '_element.html.twig' with { 'title': 'Editions', 'element': source.editions } %}
         {% include '_element.html.twig' with { 'title': 'Itinerary', 'element': source.itinerary } %}
-        {% include '_element.html.twig' with { 'title': 'Excerpt', 'element': source.content } %}
+        {% include '_element.html.twig' with { 'title': 'Excerpt', 'element': source.excerpts } %}
         {% include '_modal.html.twig' with { 'elements': source.literatures, 'title': 'Literature', 'type': 'literatures' } %}
     </div>
 {% endblock %}

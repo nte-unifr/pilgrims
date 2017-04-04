@@ -59,9 +59,9 @@ class Source
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text", nullable=true)
+     * @ORM\Column(name="excerpts", type="text", nullable=true)
      */
-    private $content;
+    private $excerpts;
 
     /**
      * @ORM\ManyToMany(targetEntity="Literature")
@@ -80,7 +80,7 @@ class Source
 
     public function __toString()
     {
-        return $this->getTitle().' - '.$this->getYear();
+        return $this->getYear().', '.$this->getTraveler();
     }
 
     /**
@@ -209,26 +209,26 @@ class Source
     }
 
     /**
-     * Set content
+     * Set excerpts
      *
-     * @param string $content
+     * @param string $excerpts
      * @return Source
      */
-    public function setContent($content)
+    public function setExcerpts($excerpts)
     {
-        $this->content = $content;
+        $this->excerpts = $excerpts;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get excerpts
      *
      * @return string
      */
-    public function getContent()
+    public function getExcerpts()
     {
-        return $this->content;
+        return $this->excerpts;
     }
 
     /**
