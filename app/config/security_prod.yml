@@ -19,6 +19,8 @@ security:
     dev:
       pattern: ^/(_(profiler|wdt)|css|images|js)/
       security: false
+    main:
+      anonymous: ~
 #    admin:
 #      pattern: ^/admin
 #      remote_user:
