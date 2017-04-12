@@ -1,0 +1,42 @@
+{% if modals is not empty or content is not empty %}
+  <div class="panel panel-default panel-content">
+    <div class="panel-heading" role="tab" id="heading{{ id }}">
+      <h4 class="panel-title">
+        <a{% if not expanded %} class="collapsed"{% endif %} role="button" data-toggle="collapse" data-parent="{{ parent }}" href="#collapse{{ id }}" aria-expanded="{% if expanded %}true{% else %}false{% endif %}" aria-controls="collapse{{ id }}">
+          {{ title }}
+        </a>
+      </h4>
+    </div>
+    <div id="collapse{{ id }}" class="panel-collapse collapse{% if expanded %} in{% endif %}" role="tabpanel" aria-labelledby="heading{{ id }}">
+      <div class="panel-body">
+        <p>
+          {% for modal in modals %}
+            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{ id }}{{ modal.id }}Modal">
+              <i class="fa fa-book" aria-hidden="true"></i> {{ modal.title }}
+            </button>
+          {% endfor %}
+        </p>
+        <p>
+          {{ content | markdown }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    {% for modal in modals %}
+      <div class="modal fade" id="{{ id }}{{ modal.id }}Modal" tabindex="-1" role="dialog" aria-labelledby="{{ id }}{{ modal.id }}ModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="{{ id }}{{ modal.id }}ModalLabel">{{ modal.title }}</h4>
+            </div>
+            <div class="modal-body">
+              {{ modal.content | markdown }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

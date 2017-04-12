@@ -38,7 +38,7 @@ class Source
     /**
      * @var string
      *
-     * @ORM\Column(name="year", type="string", length=255, nullable=true)
+     * @ORM\Column(name="year", type="string", length=255)
      */
     private $year;
 
@@ -64,7 +64,7 @@ class Source
     private $excerpts;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Literature")
+     * @ORM\ManyToMany(targetEntity="Literature", cascade={"remove", "persist"})
      * @ORM\JoinTable(name="sources_literatures",
      *      joinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id")}

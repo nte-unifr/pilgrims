@@ -112,8 +112,8 @@ class Site
      * @ORM\ManyToMany(targetEntity="MemorialFunctionsKeyword")
      * @ORM\OrderBy({"title" = "ASC"})
      * @ORM\JoinTable(name="sites_memorialfunctionskeywords",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="memorialfunctionskeyword_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="memorialfunctionskeyword_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $memorialFunctionsKeywords;
@@ -121,8 +121,8 @@ class Site
     /**
      * @ORM\ManyToMany(targetEntity="HistoricalSource")
      * @ORM\JoinTable(name="sites_historicalsources",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="historicalsource_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="historicalsource_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $historicalSources;
@@ -130,8 +130,8 @@ class Site
     /**
      * @ORM\ManyToMany(targetEntity="Toponym")
      * @ORM\JoinTable(name="sites_toponyms",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="toponym_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="toponym_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $toponyms;
@@ -139,14 +139,15 @@ class Site
     /**
      * @ORM\ManyToMany(targetEntity="CulticPhenomenaKeyword")
      * @ORM\JoinTable(name="sites_culticphenomenakeywords",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="culticphenomenakeyword_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="culticphenomenakeyword_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $culticPhenomenaKeywords;
 
     /**
      * @ORM\ManyToMany(targetEntity="Source")
+     * @ORM\OrderBy({"year" = "ASC"})
      * @ORM\JoinTable(name="sites_sources",
      *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")}
@@ -158,8 +159,8 @@ class Site
      * @ORM\ManyToMany(targetEntity="Literature")
      * @ORM\OrderBy({"title" = "asc"})
      * @ORM\JoinTable(name="sites_literatures",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="literature_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $literatures;

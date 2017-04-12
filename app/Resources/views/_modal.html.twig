@@ -1,6 +1,5 @@
 {% if elements is not empty %}
   <div class="col-sm-6 grid-item">
-    <h3>{{ title }}</h3>
     <ul class="fa-ul">
       {% for element in elements %}
         <li><a data-toggle="modal" data-target="#{{ type }}Modal{{ element.id }}" class="pointer"><i class="fa fa-book fa-li"></i></li>{{ element.title }}</a></li>

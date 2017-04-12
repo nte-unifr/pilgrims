@@ -96,8 +96,10 @@ easy_admin:
                     - 'history'
                     - 'archaeologicalData'
                     - 'environmentalContext'
+                    - 'memorialFunctionsKeywords'
                     - 'memorialFunctions'
                     - 'liturgicalHabits'
+                    - 'culticPhenomenaKeywords'
                     - 'culticPhenomena'
                     - 'additionalData'
                     - { property: 'literatures', label: 'Literature' }
@@ -105,9 +107,6 @@ easy_admin:
                     - 'toponyms'
                     - 'latitude'
                     - 'longitude'
-                    - { type: 'group', css_class: 'col-sm-3', label: 'Keywords' }
-                    - 'culticPhenomenaKeywords'
-                    - 'memorialFunctionsKeywords'
                     - { type: 'group', css_class: 'col-sm-3', label: 'Image' }
                     - { property: 'imageFile', type: 'vich_image' }
         CulticPhenomenaKeyword:

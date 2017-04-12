@@ -34,6 +34,8 @@ $(document).ready(function () {
         initMap($('#gmap'))
       }
     })
+    // add bootstrap to markdown tables
+    $('.panel-content table').addClass('table')
   }
 })
 

@@ -17,14 +17,81 @@
             <h1>{{ source.title }}</h1>
         </div>
     </div>
-    <div class="row grid">
-        {% include '_element.html.twig' with { 'title': 'Traveler', 'element': source.traveler } %}
-        {% include '_element.html.twig' with { 'title': 'Year', 'element': source.year } %}
-        {% include '_element.html.twig' with { 'title': 'Editions', 'element': source.editions } %}
-        {% include '_element.html.twig' with { 'title': 'Itinerary', 'element': source.itinerary } %}
-        {% include '_element.html.twig' with { 'title': 'Excerpt', 'element': source.excerpts } %}
-        {% include '_modal.html.twig' with { 'elements': source.literatures, 'title': 'Literature', 'type': 'literatures' } %}
+    <div class="row">
+        <div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Editions</h3>
+                </div>
+                <div class="panel-body">
+                    {{ source.editions | markdown }}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Itinerary</h3>
+                </div>
+                <div class="panel-body">
+                    {{ source.itinerary | markdown }}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Excerpt</h3>
+                </div>
+                <div class="panel-body">
+                    {{ source.excerpts | markdown }}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Traveler</h3>
+                </div>
+                <div class="panel-body">
+                    {{ source.traveler }}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Year</h3>
+                </div>
+                <div class="panel-body">
+                    {{ source.year }}
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Literature</h3>
+                </div>
+                <div class="panel-body">
+                    {% for modal in source.literatures %}
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{ modal.id }}Modal">
+                            <i class="fa fa-book" aria-hidden="true"></i> {{ modal.title }}
+                        </button>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Modal -->
+    {% for modal in source.literatures %}
+      <div class="modal fade" id="{{ modal.id }}Modal" tabindex="-1" role="dialog" aria-labelledby="{{ modal.id }}ModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="{{ modal.id }}ModalLabel">{{ modal.title }}</h4>
+            </div>
+            <div class="modal-body">
+              {{ modal.content | markdown }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
 {% endblock %}
 
 {% block javascripts %}

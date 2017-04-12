@@ -24,7 +24,8 @@
         "javiereguiluz/easyadmin-bundle": "^1.12",
         "vich/uploader-bundle": "^0.14.0",
         "symfony/assetic-bundle": "^2.8",
-        "liip/imagine-bundle": "^1.5"
+        "liip/imagine-bundle": "^1.5",
+        "knplabs/knp-markdown-bundle": "^1.5"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

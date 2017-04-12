@@ -1,2 +1,26 @@
 .pointer { cursor: pointer; }
 #sites a { text-decoration: none; }
+#sites .thumbnail .caption { height: 140px; }
+
+/* better bootstrap collapse */
+#accordion .panel-heading { padding: 0;}
+#accordion .panel-title > a {
+	display: block;
+	padding: 0.4em 0.6em;
+    outline: none;
+    font-weight:bold;
+    text-decoration: none;
+}
+#accordion .panel-title > a.accordion-toggle::before, #accordion a[data-toggle="collapse"]::before  {
+    content: "\f077";
+    float: left;
+    font-family: FontAwesome;
+	margin-right :1em;
+}
+#accordion .panel-title > a.accordion-toggle.collapsed::before, #accordion a.collapsed[data-toggle="collapse"]::before  {
+    content: "\f078";
+}
+
+blockquote {
+    font-size: 13px;
+}
