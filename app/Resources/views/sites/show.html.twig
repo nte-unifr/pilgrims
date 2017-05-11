@@ -22,18 +22,16 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="well">
-          {% if site.toponyms is not empty %}
-            <div class="row">
-              <div class="col-xs-6">
-                {% for toponym in site.toponyms %}
-                  <strong><i class="fa fa-map-marker" aria-hidden="true"></i> {{ toponym.title }}</strong>
-                {% endfor %}
-              </div>
-              <div class="col-xs-6">
-                <strong><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</strong>
-              </div>
+          <div class="row">
+            <div class="col-xs-6">
+              {% if site.location is not null %}
+                <strong><i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}</strong>
+              {% endif %}
             </div>
-          {% endif %}
+            <div class="col-xs-6">
+              <strong><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</strong>
+            </div>
+          </div>
         </div>
       </div>
     </div>

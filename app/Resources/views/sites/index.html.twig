@@ -19,9 +19,9 @@
               <div class="caption">
                 <h3>{{ site.title | markdown }}</h3>
                 <p>
-                  {% for toponym in site.toponyms %}
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ toponym.title }}&nbsp;
-                  {% endfor %}
+                  {% if site.location is not null %}
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}
+                  {% endif %}
                 </p>
                 <p><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude}} , {{ site.longitude }}</p>
               </div>

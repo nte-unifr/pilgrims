@@ -35,6 +35,10 @@ class Region
     private $country;
 
 
+    public function __toString() {
+        return $this->getTitle();
+    }
+    
     /**
      * Get id
      *

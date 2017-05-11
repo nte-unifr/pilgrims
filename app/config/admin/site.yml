@@ -10,6 +10,7 @@ easy_admin:
                     - 'title'
                     - 'latitude'
                     - 'longitude'
+                    - 'location'
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
@@ -29,7 +30,7 @@ easy_admin:
                     - 'additionalData'
                     - { property: 'literatures', label: 'Literature' }
                     - { type: 'group', css_class: 'col-sm-3', label: 'Localisation' }
-                    - 'toponyms'
+                    - 'location'
                     - 'latitude'
                     - 'longitude'
                     - { type: 'group', css_class: 'col-sm-9 site_images_selector', label: 'Images' }

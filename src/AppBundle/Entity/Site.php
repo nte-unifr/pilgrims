@@ -128,13 +128,10 @@ class Site
     private $historicalSources;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Toponym")
-     * @ORM\JoinTable(name="sites_toponyms",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="toponym_id", referencedColumnName="id", onDelete="CASCADE")}
-     *      )
+     * @ORM\ManyToOne(targetEntity="Location")
+     * @ORM\JoinColumn(name="location_id", referencedColumnName="id", nullable=true)
      */
-    private $toponyms;
+    private $location;
 
     /**
      * @ORM\ManyToMany(targetEntity="CulticPhenomenaKeyword")
@@ -181,7 +178,6 @@ class Site
     public function __construct() {
         $this->memorialFunctionsKeywords = new \Doctrine\Common\Collections\ArrayCollection();
         $this->historicalSources = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->toponyms = new \Doctrine\Common\Collections\ArrayCollection();
         $this->culticPhenomenaKeywords = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
@@ -541,39 +537,6 @@ class Site
     }
 
     /**
-     * Add toponyms
-     *
-     * @param \AppBundle\Entity\Toponym $toponyms
-     * @return Site
-     */
-    public function addToponym(\AppBundle\Entity\Toponym $toponyms)
-    {
-        $this->toponyms[] = $toponyms;
-
-        return $this;
-    }
-
-    /**
-     * Remove toponyms
-     *
-     * @param \AppBundle\Entity\Toponym $toponyms
-     */
-    public function removeToponym(\AppBundle\Entity\Toponym $toponyms)
-    {
-        $this->toponyms->removeElement($toponyms);
-    }
-
-    /**
-     * Get toponyms
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getToponyms()
-    {
-        return $this->toponyms;
-    }
-
-    /**
      * Add culticPhenomenaKeywords
      *
      * @param \AppBundle\Entity\CulticPhenomenaKeyword $culticPhenomenaKeywords
@@ -702,5 +665,51 @@ class Site
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Site
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set location
+     *
+     * @param \AppBundle\Entity\Location $location
+     * @return Site
+     */
+    public function setLocation(\AppBundle\Entity\Location $location = null)
+    {
+        $this->location = $location;
+
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return \AppBundle\Entity\Location 
+     */
+    public function getLocation()
+    {
+        return $this->location;
     }
 }
