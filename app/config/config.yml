@@ -34,6 +34,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'form/fields.html.twig'
+        - 'VichUploaderBundle:Form:fields.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -73,6 +76,9 @@ easy_admin:
     design:
         brand_color: '#00134a'
         form_theme: 'vertical'
+        assets:
+            css:
+                - '/css/admin.css'
     entities:
         Site:
             class: AppBundle\Entity\Site
@@ -84,7 +90,6 @@ easy_admin:
                     - 'title'
                     - 'latitude'
                     - 'longitude'
-                    - { property: 'imageName', type: 'image', base_path: %app.path.full.site_images% }
             form:
                 fields:
                     - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
@@ -107,8 +112,8 @@ easy_admin:
                     - 'toponyms'
                     - 'latitude'
                     - 'longitude'
-                    - { type: 'group', css_class: 'col-sm-3', label: 'Image' }
-                    - { property: 'imageFile', type: 'vich_image' }
+                    - { type: 'group', css_class: 'col-sm-9 site_images_selector', label: 'Images' }
+                    - { property: 'images', type: 'collection', type_options: { entry_type: 'AppBundle\Form\SiteImageType', by_reference: false } }
         CulticPhenomenaKeyword:
             class: AppBundle\Entity\CulticPhenomenaKeyword
             label: 'Cultic Phenomena Kw'

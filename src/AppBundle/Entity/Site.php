@@ -149,8 +149,8 @@ class Site
      * @ORM\ManyToMany(targetEntity="Source")
      * @ORM\OrderBy({"year" = "ASC"})
      * @ORM\JoinTable(name="sites_sources",
-     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="site_id", referencedColumnName="id", onDelete="CASCADE")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id", onDelete="CASCADE")}
      *      )
      */
     private $sources;
@@ -166,20 +166,9 @@ class Site
     private $literatures;
 
     /**
-     * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     *
-     * @Vich\UploadableField(mapping="site_image", fileNameProperty="imageName")
-     *
-     * @var File
+     * @ORM\OneToMany(targetEntity="SiteImage", mappedBy="site", cascade={"persist","remove"}, orphanRemoval=true)
      */
-    private $imageFile;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     *
-     * @var string
-     */
-    private $imageName = null;
+    private $images;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
@@ -196,6 +185,7 @@ class Site
         $this->culticPhenomenaKeywords = new \Doctrine\Common\Collections\ArrayCollection();
         $this->sources = new \Doctrine\Common\Collections\ArrayCollection();
         $this->literatures = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->images = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -683,54 +673,34 @@ class Site
     }
 
     /**
-     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-     * must be able to accept an instance of 'File' as the bundle will inject one here
-     * during Doctrine hydration.
+     * Add images
      *
-     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-     *
-     * @return Product
+     * @param \AppBundle\Entity\SiteImage $image
+     * @return Site
      */
-    public function setImageFile(File $image = null)
+    public function addImage(SiteImage $image)
     {
-        $this->imageFile = $image;
-
-        if ($image) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTime('now');
-        }
-
+        $this->images[] = $image;
+        $image->setSite($this);
         return $this;
     }
-
     /**
-     * @return File
-     */
-    public function getImageFile()
-    {
-        return $this->imageFile;
-    }
-
-    /**
-     * @param string $imageName
+     * Remove images
      *
-     * @return Product
+     * @param \AppBundle\Entity\SiteImage $image
      */
-    public function setImageName($imageName)
+    public function removeImage(SiteImage $image)
     {
-        $this->imageName = $imageName;
-
-        return $this;
+        $this->images->removeElement($image);
+        $image->setSite(null);
     }
-
     /**
-     * @return string
+     * Get images
+     *
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getImageName()
+    public function getImages()
     {
-        return $this->imageName;
+        return $this->images;
     }
 }
