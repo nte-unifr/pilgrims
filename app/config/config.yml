@@ -10,6 +10,7 @@ imports:
 parameters:
     locale: en
     app.path.site_images: /uploads/images/sites
+    app.path.full.site_images: %app.path.site_images%
 
 framework:
     #esi:             ~
