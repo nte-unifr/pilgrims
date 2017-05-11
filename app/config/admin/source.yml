@@ -1,0 +1,23 @@
+easy_admin:
+    entities:
+        Source:
+            class: AppBundle\Entity\Source
+            label: 'Sources'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
+                    - 'traveler'
+                    - 'year'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
+                    - 'title'
+                    - 'editions'
+                    - 'itinerary'
+                    - 'excerpts'
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Metadata' }
+                    - 'traveler'
+                    - 'year'
+                    - { property: 'literatures', label: 'Literature' }

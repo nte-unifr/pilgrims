@@ -1,0 +1,11 @@
+easy_admin:
+    entities:
+        HistoricalSource:
+            class: AppBundle\Entity\HistoricalSource
+            label: 'Historical Sources'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
+                    - 'content'

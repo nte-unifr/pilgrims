@@ -1,0 +1,36 @@
+easy_admin:
+    entities:
+        Site:
+            class: AppBundle\Entity\Site
+            label: 'Sites'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
+                    - 'latitude'
+                    - 'longitude'
+            form:
+                fields:
+                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
+                    - 'title'
+                    - 'historicalNames'
+                    - 'sources'
+                    - 'sourcesQuotation'
+                    - 'historicalSources'
+                    - 'history'
+                    - 'archaeologicalData'
+                    - 'environmentalContext'
+                    - 'memorialFunctionsKeywords'
+                    - 'memorialFunctions'
+                    - 'liturgicalHabits'
+                    - 'culticPhenomenaKeywords'
+                    - 'culticPhenomena'
+                    - 'additionalData'
+                    - { property: 'literatures', label: 'Literature' }
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Localisation' }
+                    - 'toponyms'
+                    - 'latitude'
+                    - 'longitude'
+                    - { type: 'group', css_class: 'col-sm-9 site_images_selector', label: 'Images' }
+                    - { property: 'images', type: 'collection', type_options: { entry_type: 'AppBundle\Form\SiteImageType', by_reference: false } }

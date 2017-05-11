@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        CulticPhenomenaKeyword:
+            class: AppBundle\Entity\CulticPhenomenaKeyword
+            label: 'Cultic Phenomena Kw'
+            list:
+                title: 'Cultic Phenomena Keywords'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'

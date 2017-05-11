@@ -1,0 +1,11 @@
+easy_admin:
+    entities:
+        Literature:
+            class: AppBundle\Entity\Literature
+            label: 'Literature'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
+                    - 'content'

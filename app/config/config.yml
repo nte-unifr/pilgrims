@@ -1,6 +1,9 @@
 imports:
     - { resource: parameters.yml }
     - { resource: services.yml }
+    - { resource: vich.yml }
+    - { resource: liip_imagine.yml }
+    - { resource: admin/ }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -68,140 +71,9 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
-# Easyadmin Configuration
-easy_admin:
-    site_name: 'Pilgrims <em style="font-size: 80%;">Admin.</em>'
-    list:
-        max_results: 30
-    design:
-        brand_color: '#00134a'
-        form_theme: 'vertical'
-        assets:
-            css:
-                - '/css/admin.css'
-    entities:
-        Site:
-            class: AppBundle\Entity\Site
-            label: 'Sites'
-            list:
-                title: '%%entity_label%%'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-                    - 'latitude'
-                    - 'longitude'
-            form:
-                fields:
-                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
-                    - 'title'
-                    - 'historicalNames'
-                    - 'sources'
-                    - 'sourcesQuotation'
-                    - 'historicalSources'
-                    - 'history'
-                    - 'archaeologicalData'
-                    - 'environmentalContext'
-                    - 'memorialFunctionsKeywords'
-                    - 'memorialFunctions'
-                    - 'liturgicalHabits'
-                    - 'culticPhenomenaKeywords'
-                    - 'culticPhenomena'
-                    - 'additionalData'
-                    - { property: 'literatures', label: 'Literature' }
-                    - { type: 'group', css_class: 'col-sm-3', label: 'Localisation' }
-                    - 'toponyms'
-                    - 'latitude'
-                    - 'longitude'
-                    - { type: 'group', css_class: 'col-sm-9 site_images_selector', label: 'Images' }
-                    - { property: 'images', type: 'collection', type_options: { entry_type: 'AppBundle\Form\SiteImageType', by_reference: false } }
-        CulticPhenomenaKeyword:
-            class: AppBundle\Entity\CulticPhenomenaKeyword
-            label: 'Cultic Phenomena Kw'
-            list:
-                title: 'Cultic Phenomena Keywords'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-        HistoricalSource:
-            class: AppBundle\Entity\HistoricalSource
-            label: 'Historical Sources'
-            list:
-                title: '%%entity_label%%'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-                    - 'content'
-        Literature:
-            class: AppBundle\Entity\Literature
-            label: 'Literature'
-            list:
-                title: '%%entity_label%%'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-                    - 'content'
-        MemorialFunctionsKeyword:
-            class: AppBundle\Entity\MemorialFunctionsKeyword
-            label: 'Memorial Functions Kw'
-            list:
-                title: 'Memorial Functions Keywords'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-        Source:
-            class: AppBundle\Entity\Source
-            label: 'Sources'
-            list:
-                title: '%%entity_label%%'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-                    - 'traveler'
-                    - 'year'
-            form:
-                fields:
-                    - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
-                    - 'title'
-                    - 'editions'
-                    - 'itinerary'
-                    - 'excerpts'
-                    - { type: 'group', css_class: 'col-sm-3', label: 'Metadata' }
-                    - 'traveler'
-                    - 'year'
-                    - { property: 'literatures', label: 'Literature' }
-        Toponym:
-            class: AppBundle\Entity\Toponym
-            label: 'Toponyms'
-            list:
-                title: '%%entity_label%%'
-                sort: ['title', 'ASC']
-                fields:
-                    - 'title'
-
-# VichUploader config
-vich_uploader:
-    db_driver: orm
-    mappings:
-        site_image:
-            uri_prefix: %app.path.full.site_images%
-            upload_destination: %kernel.root_dir%/../web%app.path.site_images%
-            namer: vich_uploader.namer_uniqid
-
 # Assetic config
 assetic:
     debug:          '%kernel.debug%'
     use_controller: false
     filters:
         cssrewrite: ~
-
-# LiipImagineBundle
-liip_imagine:
-  resolvers:
-    default:
-      web_path: ~
-  filter_sets:
-    cache: ~
-    index_thumb:
-      quality: 100
-      filters:
-        thumbnail: { size: [300, 300], mode: outbound }

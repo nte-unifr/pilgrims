@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        MemorialFunctionsKeyword:
+            class: AppBundle\Entity\MemorialFunctionsKeyword
+            label: 'Memorial Functions Kw'
+            list:
+                title: 'Memorial Functions Keywords'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'

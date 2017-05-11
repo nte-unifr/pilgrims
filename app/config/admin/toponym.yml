@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Toponym:
+            class: AppBundle\Entity\Toponym
+            label: 'Toponyms'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
