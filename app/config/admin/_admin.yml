@@ -1,10 +1,25 @@
 easy_admin:
   site_name: 'Pilgrims <em style="font-size: 80%;">Admin.</em>'
   list:
-      max_results: 30
+    max_results: 30
   design:
-      brand_color: '#00134a'
-      form_theme: 'vertical'
-      assets:
-          css:
-              - '/css/admin.css'
+    brand_color: '#00134a'
+    form_theme: 'vertical'
+    assets:
+      css:
+        - '/css/admin.css'
+    menu:
+      - { label: 'Sites' }
+      - { entity: 'Site', icon: 'th-list', label: 'List sites', default: true }
+      - { entity: 'Site', icon: 'plus-circle', label: 'Add site', params: { action: 'new' } }
+      - { label: 'Keywords' }
+      - { entity: 'CulticPhenomenaKeyword', icon: 'tags', label: 'Cultic Phenomena' }
+      - { entity: 'MemorialFunctionsKeyword', icon: 'tags', label: 'Memorial Functions' }
+      - { label: 'Sources' }
+      - { entity: 'HistoricalSource', icon: 'book', label: 'Historical Sources' }
+      - { entity: 'Literature', icon: 'book', label: 'Literatures' }
+      - { entity: 'Source', icon: 'book', label: 'Sources' }
+      - { label: 'Toponyms' }
+      - { entity: 'Country', icon: 'globe', label: 'Countries' }
+      - { entity: 'Region', icon: 'map-marker', label: 'Regions' }
+      - { entity: 'Location', icon: 'map-pin', label: 'Locations' }

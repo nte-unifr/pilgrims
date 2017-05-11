@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Location:
+            class: AppBundle\Entity\Location
+            label: 'Locations'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'

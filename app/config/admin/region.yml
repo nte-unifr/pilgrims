@@ -1,0 +1,10 @@
+easy_admin:
+    entities:
+        Region:
+            class: AppBundle\Entity\Region
+            label: 'Regions'
+            list:
+                title: '%%entity_label%%'
+                sort: ['title', 'ASC']
+                fields:
+                    - 'title'
