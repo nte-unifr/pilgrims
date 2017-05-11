@@ -28,6 +28,12 @@ class Location
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Region")
+     * @ORM\JoinColumn(name="region_id", referencedColumnName="id", nullable=false)
+     */
+    private $region;
+
 
     /**
      * Get id
@@ -60,5 +66,28 @@ class Location
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set region
+     *
+     * @param \AppBundle\Entity\Region $region
+     * @return Location
+     */
+    public function setRegion(\AppBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \AppBundle\Entity\Region 
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 }

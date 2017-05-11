@@ -8,3 +8,8 @@ easy_admin:
                 sort: ['title', 'ASC']
                 fields:
                     - 'title'
+                    - 'country'
+            form:
+                fields:
+                    - 'title'
+                    - 'country'

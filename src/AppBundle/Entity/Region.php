@@ -28,6 +28,12 @@ class Region
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Country")
+     * @ORM\JoinColumn(name="country_id", referencedColumnName="id", nullable=false)
+     */
+    private $country;
+
 
     /**
      * Get id
@@ -60,5 +66,28 @@ class Region
     public function getTitle()
     {
         return $this->title;
+    }
+
+    /**
+     * Set country
+     *
+     * @param \AppBundle\Entity\Country $country
+     * @return Region
+     */
+    public function setCountry(\AppBundle\Entity\Country $country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return \AppBundle\Entity\Country 
+     */
+    public function getCountry()
+    {
+        return $this->country;
     }
 }
