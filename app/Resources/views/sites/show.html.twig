@@ -13,46 +13,52 @@
       </div>
     </div>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <h1>{{ site.title | markdown }}</h1>
-      </div>
+    <div class="page-header">
+      <h1>{{ site.title | markdown }}</h1>
     </div>
 
     <div class="row">
-      <div class="col-xs-12">
-        <div class="well">
-          <div class="row">
-            <div class="col-xs-6">
-              {% if site.location is not null %}
-                <strong><i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}</strong>
-              {% endif %}
+      {% if site.images is not empty %}
+        <div class="col-sm-6">
+          <div class="panel panel-default">
+            <div class="panel-body hidden-xs">
+              <a href="{{ ('/uploads/images/sites/' ~ site.images.first.imageName) }}" class="image-popup" title="{{ site.images.first.description }}">
+                <img src="{{ ('/uploads/images/sites/' ~ site.images.first.imageName) }}" alt="{{ site.images.first.description }}" class="img-responsive" >
+              </a>
             </div>
-            <div class="col-xs-6">
-              <strong><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</strong>
+            <div class="panel-footer">
+              {% for image in site.images %}
+                <a href="{{ ('/uploads/images/sites/' ~ image.imageName) }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ site.images.first.description }}">
+                  <img src="{{ ('/uploads/images/sites/' ~ image.imageName) | imagine_filter('show_thumb') }}" alt="{{ image.description }}" class="img-thumbnail" >
+                </a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {% endif %}
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+          <div id="map-container" class="panel-body" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}">
+            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+            <span class="sr-only">Loading map...</span>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-sm-8">
+                {% if site.location is not null %}
+                  <strong><i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}</strong>
+                {% endif %}
+              </div>
+              <div class="col-sm-4">
+                {% if site.latitude is not empty and site.longitude is not empty %}
+                  <strong><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</strong>
+                {% endif %}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="row">
-      <div id="image" class="col-sm-6">
-        {% if false %}
-          <a href="{{ vich_uploader_asset(site, 'imageFile') }}" class="thumbnail image-popup">
-            <img src="{{ vich_uploader_asset(site, 'imageFile') }}" alt="{{ site.title }}" >
-          </a>
-        {% else %}
-          <a href="#" class="thumbnail">
-            <img src="{{ asset('images/void_show.png') }}" alt="{{ site.title }}" >
-          </a>
-        {% endif %}
-      </div>
-      <div class="col-sm-6">
-        {% if site.latitude is not empty and site.longitude is not empty %}
-          <div id="gmap" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}"></div>
-        {% endif %}
-      </div>
+      
     </div>
 
     <div class="row">

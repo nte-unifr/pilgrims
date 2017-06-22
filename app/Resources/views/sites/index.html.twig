@@ -11,10 +11,10 @@
         <div class="col-sm-6 col-md-3">
           <a href="{{ path('sites_show', {'id': site.id}) }}">
             <div class="thumbnail">
-              {% if true %}
+              {% if site.images is empty %}
                 <img src="{{ ('/images/void.png') | imagine_filter('index_thumb') }}" alt="{{ site.title }}" >
               {% else %}
-                <img src="{{ ('/uploads/images/sites/' ~ site.imageName) | imagine_filter('index_thumb') }}" alt="{{ site.title }}" >
+                <img src="{{ ('/uploads/images/sites/' ~ site.images.first.imageName) | imagine_filter('index_thumb') }}" alt="{{ site.title }}" >
               {% endif %}
               <div class="caption">
                 <h3>{{ site.title | markdown }}</h3>
