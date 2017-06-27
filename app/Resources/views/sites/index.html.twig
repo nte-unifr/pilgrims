@@ -12,9 +12,9 @@
           <a href="{{ path('sites_show', {'id': site.id}) }}">
             <div class="thumbnail">
               {% if site.images is empty %}
-                <img src="{{ ('/images/void.png') | imagine_filter('index_thumb') }}" alt="{{ site.title }}" >
+                <img src="{{ ('/images/void.png') | imagine_filter('site_300') }}" alt="{{ site.title }}" >
               {% else %}
-                <img src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('index_thumb') }}" alt="{{ site.title }}" >
+                <img src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_300') }}" alt="{{ site.title }}" >
               {% endif %}
               <div class="caption">
                 <h3>{{ site.title | markdown }}</h3>

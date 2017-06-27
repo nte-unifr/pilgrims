@@ -22,14 +22,14 @@
         <div class="col-sm-6">
           <div class="panel panel-default">
             <div class="panel-body hidden-xs">
-              <a href="{{ ('/uploads/images/sites/' ~ site.images.first.imageName) }}" class="image-popup" title="{{ site.images.first.description }}">
-                <img src="{{ ('/uploads/images/sites/' ~ site.images.first.imageName) }}" alt="{{ site.images.first.description }}" class="img-responsive" >
+              <a href="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" class="image-popup" title="{{ site.images.first.description }}">
+                <img src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" alt="{{ site.images.first.description }}" class="img-responsive" >
               </a>
             </div>
             <div class="panel-footer">
               {% for image in site.images %}
-                <a href="{{ ('/uploads/images/sites/' ~ image.imageName) }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ site.images.first.description }}">
-                  <img src="{{ ('/uploads/images/sites/' ~ image.imageName) | imagine_filter('show_thumb') }}" alt="{{ image.description }}" class="img-thumbnail" >
+                <a href="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_full') }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ site.images.first.description }}">
+                  <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_100') }}" alt="{{ image.description }}" class="img-thumbnail" >
                 </a>
               {% endfor %}
             </div>
