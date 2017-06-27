@@ -1,7 +1,6 @@
 imports:
     - { resource: parameters.yml }
     - { resource: services.yml }
-    - { resource: vich.yml }
     - { resource: liip_imagine.yml }
     - { resource: admin/ }
 
