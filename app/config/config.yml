@@ -9,8 +9,7 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    app.path.site_images: /uploads/images/sites
-    app.path.full.site_images: %app.path.site_images%
+    app.path.site_images: uploads/images/sites
 
 framework:
     #esi:             ~
