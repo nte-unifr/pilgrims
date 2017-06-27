@@ -47,7 +47,7 @@ class SiteImage
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="site_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="uploads", fileNameProperty="imageName")
      *
      * @var File
      */

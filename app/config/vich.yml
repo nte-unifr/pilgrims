@@ -1,7 +1,7 @@
 vich_uploader:
     db_driver: orm
     mappings:
-        site_image:
-            uri_prefix: uploads/images/sites
-            upload_destination: %kernel.root_dir%/../web/uploads/images/sites
+        uploads:
+            uri_prefix: /uploads
+            upload_destination: %kernel.root_dir%/../web/uploads
             namer: vich_uploader.namer_uniqid
