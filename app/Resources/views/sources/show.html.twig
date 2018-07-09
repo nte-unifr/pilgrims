@@ -29,34 +29,40 @@
             </div>
         </div>
         <div class="col-sm-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Traveler</h3>
+            {% if source.traveler %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Traveler</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ source.traveler }}
+                    </div>
                 </div>
-                <div class="panel-body">
-                    {{ source.traveler }}
+            {% endif %}
+            {% if source.year %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Year</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{ source.year }}
+                    </div>
                 </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Year</h3>
+            {% endif %}
+            {% if source.literatures is not empty %}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Literature</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% for modal in source.literatures %}
+                            <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{ modal.id }}Modal">
+                                <i class="fa fa-book" aria-hidden="true"></i> {{ modal.title }}
+                            </button>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="panel-body">
-                    {{ source.year }}
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Literature</h3>
-                </div>
-                <div class="panel-body">
-                    {% for modal in source.literatures %}
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#{{ modal.id }}Modal">
-                            <i class="fa fa-book" aria-hidden="true"></i> {{ modal.title }}
-                        </button>
-                    {% endfor %}
-                </div>
-            </div>
+            {% endif %}
         </div>
     </div>
 
