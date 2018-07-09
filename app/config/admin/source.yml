@@ -15,8 +15,6 @@ easy_admin:
                     - { type: 'group', css_class: 'col-sm-9', label: 'Information' }
                     - 'title'
                     - 'editions'
-                    - 'itinerary'
-                    - 'excerpts'
                     - { type: 'group', css_class: 'col-sm-3', label: 'Metadata' }
                     - 'traveler'
                     - 'year'

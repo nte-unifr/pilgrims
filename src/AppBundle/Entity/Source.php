@@ -50,20 +50,6 @@ class Source
     private $editions;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="itinerary", type="text", nullable=true)
-     */
-    private $itinerary;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="excerpts", type="text", nullable=true)
-     */
-    private $excerpts;
-
-    /**
      * @ORM\ManyToMany(targetEntity="Literature", cascade={"remove", "persist"})
      * @ORM\JoinTable(name="sources_literatures",
      *      joinColumns={@ORM\JoinColumn(name="source_id", referencedColumnName="id")},
@@ -183,52 +169,6 @@ class Source
     public function getEditions()
     {
         return $this->editions;
-    }
-
-    /**
-     * Set itinerary
-     *
-     * @param string $itinerary
-     * @return Source
-     */
-    public function setItinerary($itinerary)
-    {
-        $this->itinerary = $itinerary;
-
-        return $this;
-    }
-
-    /**
-     * Get itinerary
-     *
-     * @return string
-     */
-    public function getItinerary()
-    {
-        return $this->itinerary;
-    }
-
-    /**
-     * Set excerpts
-     *
-     * @param string $excerpts
-     * @return Source
-     */
-    public function setExcerpts($excerpts)
-    {
-        $this->excerpts = $excerpts;
-
-        return $this;
-    }
-
-    /**
-     * Get excerpts
-     *
-     * @return string
-     */
-    public function getExcerpts()
-    {
-        return $this->excerpts;
     }
 
     /**
