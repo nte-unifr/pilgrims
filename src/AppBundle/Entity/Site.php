@@ -109,6 +109,13 @@ class Site
     private $additionalData;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=500, nullable=true)
+     */
+    private $author;
+
+    /**
      * @ORM\ManyToMany(targetEntity="MemorialFunctionsKeyword")
      * @ORM\OrderBy({"title" = "ASC"})
      * @ORM\JoinTable(name="sites_memorialfunctionskeywords",
@@ -711,5 +718,28 @@ class Site
     public function getLocation()
     {
         return $this->location;
+    }
+
+    /**
+     * Set author
+     *
+     * @param string $author
+     * @return Site
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
     }
 }

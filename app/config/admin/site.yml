@@ -33,5 +33,7 @@ easy_admin:
                     - 'location'
                     - 'latitude'
                     - 'longitude'
+                    - { type: 'group', css_class: 'col-sm-3', label: 'Metadata' }
+                    - 'author'
                     - { type: 'group', css_class: 'col-sm-9 site_images_selector', label: 'Images' }
                     - { property: 'images', type: 'collection', type_options: { entry_type: 'AppBundle\Form\SiteImageType', by_reference: false } }
