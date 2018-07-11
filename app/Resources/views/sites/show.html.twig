@@ -28,7 +28,7 @@
             </div>
             <div class="panel-footer">
               {% for image in site.images %}
-                <a href="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_full') }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ site.images.first.description }}">
+                <a href="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_full') }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ image.description }}">
                   <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_100') }}" alt="{{ image.description }}" class="img-thumbnail" >
                 </a>
               {% endfor %}
@@ -83,13 +83,12 @@
           }
         %}
         {% 
-          include '_accordion/panel-modals.html.twig' with {   
+          include '_accordion/panel.html.twig' with {   
             'id': 'history',
             'parent': '#accordion',
             'expanded': false,
             'title': 'History',
-            'content': site.history,
-            'modals': site.historicalSources
+            'content': site.history
           }
         %}
         {% 
@@ -146,6 +145,16 @@
             'expanded': false,
             'title': 'Additional data',
             'content': site.additionalData
+          }
+        %}
+        {% 
+          include '_accordion/panel-modals.html.twig' with {   
+            'id': 'historicalSources',
+            'parent': '#accordion',
+            'expanded': false,
+            'title': 'Historical Sources',
+            'content': '',
+            'modals': site.historicalSources
           }
         %}
         {% 
