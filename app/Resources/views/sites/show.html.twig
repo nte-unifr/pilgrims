@@ -167,6 +167,15 @@
             'content': ''
           }
         %}
+        {% 
+          include '_accordion/panel.html.twig' with { 
+            'id': 'author',
+            'parent': '#accordion',
+            'expanded': false,
+            'title': 'Author',
+            'content': site.author
+          }
+        %}
       </div>
     </div>
   </div>
