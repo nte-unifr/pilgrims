@@ -1,188 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ site.title }}{% endblock %}
+{% block sites_active %}active{% endblock %}
 
 {% block body %}
   <div id="site">
     <div class="row">
-      <div class="col-xs-12">
-        <ol class="breadcrumb">
-          <li><a href="{{ path('sites_index') }}">Sites</a></li>
-          <li class="active">{{ site.title }}</li>
-        </ol>
+      <div class="col-4">
+        {% include 'sites/_media.html.twig' %}
+        {% include 'sites/_location.html.twig' %}
       </div>
-    </div>
-
-    <div class="page-header">
-      <h1>{{ site.title | markdown }}</h1>
-    </div>
-
-    <div class="row">
-      {% if site.images is not empty %}
-        <div class="col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-body hidden-xs">
-              <a href="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" class="image-popup" title="{{ site.images.first.description }}">
-                <img src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" alt="{{ site.images.first.description }}" class="img-responsive" >
-              </a>
-            </div>
-            <div class="panel-footer">
-              {% for image in site.images %}
-                <a href="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_full') }}" class="{% if loop.first %}visible-xs-inline{% endif %} image-popup" title="{{ image.description }}">
-                  <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_100') }}" alt="{{ image.description }}" class="img-thumbnail" >
-                </a>
-              {% endfor %}
-            </div>
-          </div>
-        </div>
-      {% endif %}
-      <div class="col-sm-6">
-        <div class="panel panel-default">
-          <div id="map-container" class="panel-body" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}">
-            <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-            <span class="sr-only">Loading map...</span>
-          </div>
-          <div class="panel-footer">
-            <div class="row">
-              <div class="col-sm-8">
-                {% if site.location is not null %}
-                  <strong><i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}</strong>
-                {% endif %}
-              </div>
-              <div class="col-sm-4">
-                {% if site.latitude is not empty and site.longitude is not empty %}
-                  <strong><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude }}, {{ site.longitude }}</strong>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-    </div>
-
-    <div class="row">
-      <div class="panel-group col-xs-12" id="accordion" role="tablist" aria-multiselectable="true">
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'historicalNames',
-            'parent': '#accordion',
-            'expanded': true,
-            'title': 'Historical names',
-            'content': site.historicalNames
-          }
-        %}
-        {% 
-          include '_accordion/panel-links.html.twig' with { 
-            'id': 'sources',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Sources',
-            'content': site.sourcesQuotation,
-            'links': site.sources
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with {   
-            'id': 'history',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'History',
-            'content': site.history
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'archaeologicalData',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Archaeological data',
-            'content': site.archaeologicalData
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'environmentalContext',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Environmental context',
-            'content': site.environmentalContext
-          }
-        %}
-        {% 
-          include '_accordion/panel-keywords.html.twig' with { 
-            'id': 'memorialFunctions',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Memorial functions',
-            'content': site.memorialFunctions,
-            'keywords': site.memorialFunctionsKeywords
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'liturgicalHabits',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Liturgical habits',
-            'content': site.liturgicalHabits
-          }
-        %}
-        {% 
-          include '_accordion/panel-keywords.html.twig' with { 
-            'id': 'culticPhenomena',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Cultic phenomena',
-            'content': site.culticPhenomena,
-            'keywords': site.culticPhenomenaKeywords
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'additionalData',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Additional data',
-            'content': site.additionalData
-          }
-        %}
-        {% 
-          include '_accordion/panel-modals.html.twig' with {   
-            'id': 'historicalSources',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Historical Sources',
-            'content': '',
-            'modals': site.historicalSources
-          }
-        %}
-        {% 
-          include '_accordion/panel-modals.html.twig' with { 
-            'id': 'literature',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Literature',
-            'modals': site.literatures,
-            'content': ''
-          }
-        %}
-        {% 
-          include '_accordion/panel.html.twig' with { 
-            'id': 'author',
-            'parent': '#accordion',
-            'expanded': false,
-            'title': 'Author',
-            'content': site.author
-          }
-        %}
+      <div class="col-8">
+        <h1 class="h2 mb-4">
+          {{ site.title }}
+          <small class="text-muted">{{ site.historicalNames | markdown }}</small>
+        </h1>
+        {% include 'sites/_nav-tabs.html.twig' %}
+        {% include 'sites/_tab-content.html.twig' %}
       </div>
     </div>
   </div>
-{% endblock %}
-
-{% block javascripts %}
-  {{ parent() }}
-  <script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHoXNJQewWtqxZs1NUWIOXUOjvUG936RM"></script>
 {% endblock %}

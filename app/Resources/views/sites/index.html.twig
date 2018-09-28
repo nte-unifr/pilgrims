@@ -1,34 +1,13 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Sites{% endblock %}
+{% block sites_active %}active{% endblock %}
 
 {% block body %}
-  <div id="sites">
-    <h1>Sites <small>{{ sites|length }}</small></h1>
-    <hr>
-    <div class="row">
-      {% for site in sites %}
-        <div class="col-sm-6 col-md-3">
-          <a href="{{ path('sites_show', {'id': site.id}) }}">
-            <div class="thumbnail">
-              {% if site.images is empty %}
-                <img src="{{ ('/images/void.png') | imagine_filter('site_300') }}" alt="{{ site.title }}" >
-              {% else %}
-                <img src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_300') }}" alt="{{ site.title }}" >
-              {% endif %}
-              <div class="caption">
-                <h3>{{ site.title | markdown }}</h3>
-                <p>
-                  {% if site.location is not null %}
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> {{ site.location.region.country.title }} > {{ site.location.region.title }} > {{ site.location.title }}
-                  {% endif %}
-                </p>
-                <p><i class="fa fa-location-arrow" aria-hidden="true"></i> {{ site.latitude}} , {{ site.longitude }}</p>
-              </div>
-            </div>
-          </a>
-        </div>
-      {% endfor %}
-    </div>
+  {% include 'sites/_filters.html.twig' %}
+  <div id="sites" class="row card-deck">
+    {% for site in sites %}
+      {% include 'sites/_site.html.twig' %}
+    {% endfor %}
   </div>
 {% endblock %}

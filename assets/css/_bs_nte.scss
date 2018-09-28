@@ -1,0 +1,57 @@
+$blue: #00134a;
+$orange: #d06516;
+$theme-colors: (
+  "info": $orange
+);
+
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-pro/css/all.css';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i');
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  min-height: 100vh;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+#navbar-nte {
+  border-bottom: 2px $blue solid;
+  .navbar-brand {
+    text-transform: uppercase;
+    a:hover   {
+      text-decoration: none;
+    }
+  }
+  #languageDropdown i {
+    font-size: 25px;
+  }
+}
+
+#container-nte {
+  margin-top: 100px;
+}
+
+#footer-nte {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    &:hover {
+      color: rgba(255, 255, 255, 0.75);
+    }
+  }
+  .dev i {
+    font-size: 1.5em;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+.no-pointer {
+  cursor: default !important;
+}

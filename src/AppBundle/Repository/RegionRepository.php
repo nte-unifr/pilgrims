@@ -12,4 +12,8 @@ use Doctrine\ORM\EntityRepository;
  */
 class RegionRepository extends EntityRepository
 {
+  public function findAll()
+  {
+    return $this->findBy(array(), array('title' => 'ASC'));
+  }
 }

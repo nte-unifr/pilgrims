@@ -1,0 +1,17 @@
+<nav id="navbar-nte" class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1 d-flex align-items-center">
+    <a href="//unifr.ch"><img src="{{ asset('images/square.png') }}" width="40" height="40" alt="" class="mr-4"></a>
+    <a href="{{ path('sites_index') }}">Pilgrims</a>
+  </span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="navbar-nav mr-auto">
+      <a class="nav-item nav-link {{ sites_active }}" href="{{ path('sites_index') }}">Sites</a>
+    </div>
+    <div class="navbar-nav">
+      <a class="nav-item nav-link" href="//lettres.unifr.ch/fr/hist/histoire-de-lart-et-musicologie.html">Contact <i class="fal fa-external-link-square-alt"></i></a>
+    </div>
+  </div>
+</nav>

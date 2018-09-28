@@ -11,7 +11,7 @@ liip_imagine:
     site_300:
       quality: 100
       filters:
-        thumbnail: { size: [300, 300], mode: outbound }
+        thumbnail: { size: [300, 200], mode: outbound }
     site_100:
       quality: 100
       filters:

@@ -1,0 +1,23 @@
+<div class="tab-content card p-4" id="siteTabContent">
+  <div class="tab-pane fade show active" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+    {% include 'sites/_tab-sources.html.twig' %}
+  </div>
+  <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+    {{ site.history | markdown }}
+  </div>
+  <div class="tab-pane fade" id="archaelogicaldata" role="tabpanel" aria-labelledby="archaelogicaldata-tab">
+    {{ site.archaeologicalData | markdown }}
+  </div>
+  <div class="tab-pane fade" id="culticphenomena" role="tabpanel" aria-labelledby="culticphenomena-tab">
+    <p>
+      {% for keyword in site.culticPhenomenaKeywords %}
+        <span class="badge badge-light"><i class="fas fa-tag"></i> {{ keyword.title }}</span>
+      {% endfor %}
+    </p>
+    {{ site.culticPhenomena | markdown }}
+  </div>
+  <div class="tab-pane fade" id="historicalsourcesliterature" role="tabpanel" aria-labelledby="historicalsourcesliterature-tab">
+    {% include '_shared/list-group.html.twig' with { 'elements': site.historicalSources, 'title': 'Historical sources'} %}
+    {% include '_shared/list-group.html.twig' with { 'elements': site.literatures, 'title': 'Literature'} %}
+  </div>
+</div>
