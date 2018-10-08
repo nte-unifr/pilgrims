@@ -1,0 +1,31 @@
+<div class="card mb-2">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs" id="siteMediaTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="pictures-tab" data-toggle="tab" href="#pictures" role="tab" aria-controls="pictures" aria-selected="true">Pictures</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="map-tab" data-toggle="tab" href="#map" role="tab" aria-controls="map" aria-selected="false">Map</a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content card-body" id="siteMediaTabContent">
+    <div class="tab-pane fade show active" id="pictures" role="tabpanel" aria-labelledby="pictures-tab">
+      {% if site.images is not empty %}
+        <a href="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" class="image-popup" title="{{ site.images.first.description }}">
+          <img class="img-fluid mb-4" src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" alt="{{ site.images.first.description }}" >
+        </a>
+      {% endif %}
+    </div>
+    <div class="tab-pane fade" id="map" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}" style="height:400px" role="tabpanel" aria-labelledby="map-tab">
+    </div>
+  </div>
+  <div class="card-footer">
+    {% if site.location is not null %}
+      <i class="fas fa-map-marker-alt"></i> {{ site.location.region.country.title }} <i class="fas fa-angle-right"></i> {{ site.location.region.title }} <i class="fas fa-angle-right"></i> {{ site.location.title }}<br>
+    {% endif %}
+    {% if site.latitude is not empty and site.longitude is not empty %}
+      <i class="fas fa-location-circle"></i> {{ site.latitude}}, {{ site.longitude }}
+    {% endif %}
+  </div>
+</div>
