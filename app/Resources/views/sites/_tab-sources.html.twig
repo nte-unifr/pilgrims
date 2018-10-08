@@ -10,7 +10,9 @@
             <p class="mb-0">{{ source.title }}</p>
             <footer class="blockquote-footer">{{ source.year }}, {{ source.traveler }}</footer>
           </blockquote>
-          <button type="button" class="btn btn-primary btn-sm popover-toggler" data-toggler="popover" data-content="{{ source.editions | markdown }}" data-html="true" title="Editions"><i class="fas fa-books"></i></button>
+          <button type="button" class="btn btn-primary btn-sm popover-toggler" data-toggler="popover" data-content="{{ source.editions | markdown }}" data-html="true" title="Editions">
+            <i class="fas fa-books"></i> ED
+          </button>
         </li>
       {% endfor %}
     </div>
