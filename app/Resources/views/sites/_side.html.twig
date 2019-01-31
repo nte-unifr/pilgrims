@@ -1,4 +1,4 @@
-<div class="card mb-2">
+<div class="site-side card mb-2">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs" id="siteMediaTab" role="tablist">
       <li class="nav-item">
@@ -12,20 +12,50 @@
   <div class="tab-content card-body" id="siteMediaTabContent">
     <div class="tab-pane fade show active" id="pictures" role="tabpanel" aria-labelledby="pictures-tab">
       {% if site.images is not empty %}
-        <a href="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" class="image-popup" title="{{ site.images.first.description }}">
+        <a href="#" class="text-decoration-none" data-toggle="modal" data-target="#modal{{ site.images.first.id }}">
           <img class="img-fluid mb-4" src="{{ vich_uploader_asset(site.images.first, 'imageFile') | imagine_filter('site_full') }}" alt="{{ site.images.first.description }}" >
         </a>
+        {% for image in site.images %}
+          {% if image != site.images.first %}
+            <a href="#" class="text-decoration-none" data-toggle="modal" data-target="#modal{{ image.id }}">
+              <img class="img-thumbnail" src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('site_100') }}" alt="{{ image.description }}" >
+            </a>
+          {% endif %}
+          {% include '_shared/img-modal.html.twig' with { 'element': image } %}
+        {% endfor %}
       {% endif %}
     </div>
     <div class="tab-pane fade" id="map" data-lat="{{ site.latitude }}" data-lng="{{ site.longitude }}" style="height:400px" role="tabpanel" aria-labelledby="map-tab">
     </div>
   </div>
   <div class="card-footer">
-    {% if site.location is not null %}
-      <i class="fas fa-map-marker-alt"></i> {{ site.location.region.country.title }} <i class="fas fa-angle-right"></i> {{ site.location.region.title }} <i class="fas fa-angle-right"></i> {{ site.location.title }}<br>
-    {% endif %}
-    {% if site.latitude is not empty and site.longitude is not empty %}
-      <i class="fas fa-location-circle"></i> {{ site.latitude}}, {{ site.longitude }}
+    <ul class="fa-ul">
+      {% if site.location is not null %}
+        <li><span class="fa-li" ><i class="fas fa-map-marker-alt"></i></span>{{ site.location.region.country.title }} <i class="fas fa-angle-right"></i> {{ site.location.region.title }} <i class="fas fa-angle-right"></i> {{ site.location.title }}</li>
+      {% endif %}
+      {% if site.latitude is not empty and site.longitude is not empty %}
+        <li><span class="fa-li" ><i class="fas fa-location-circle"></i></span>{{ site.latitude}}, {{ site.longitude }}</li>
+      {% endif %}
+      {% if site.memorialFunctionsKeywords is not empty %}
+        <li>
+          <span class="fa-li" ><i class="fas fa-landmark"></i></span>
+          {% for keyword in site.memorialFunctionsKeywords %}
+            {{ keyword.title }}{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </li>
+      {% endif %}
+      {% if site.culticPhenomenaKeywords is not empty %}
+        <li>
+          <span class="fa-li" ><i class="fas fa-sun"></i></span>
+          {% for keyword in site.culticPhenomenaKeywords %}
+            {{ keyword.title }}{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </li>
+      {% endif %}
+    </ul>
+    {% if site.author is not null %}
+      <hr>
+      Author : {{ site.author }}
     {% endif %}
   </div>
 </div>

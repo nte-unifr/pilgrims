@@ -1,36 +1,71 @@
-<ul class="nav nav-tabs" id="siteTab" role="tablist">
-  {% if site.sources is not empty %}
-    <li class="nav-item">
-      <a class="nav-link active" id="sources-tab" data-toggle="tab" href="#sources" role="tab" aria-controls="sources" aria-selected="true">
+<ul class="nav nav-pills mb-2">
+  {% if site.sources is not empty or site.sourcesQuotation %}
+    <li class="nav-item m-1">
+      <a class="nav-link active" id="sources-tab" data-toggle="tab" href="#sources">
         Sources
       </a>
     </li>
   {% endif %}
   {% if site.history %}
-    <li class="nav-item">
-      <a class="nav-link" id="history-tab" data-toggle="tab" href="#history" role="tab" aria-controls="history" aria-selected="false">
+    <li class="nav-item m-1">
+      <a class="nav-link" id="history-tab" data-toggle="tab" href="#history">
         History
       </a>
     </li>
   {% endif %}
   {% if site.archaeologicalData %}
-    <li class="nav-item">
-      <a class="nav-link" id="archaelogicaldata-tab" data-toggle="tab" href="#archaelogicaldata" role="tab" aria-controls="archaelogicaldata" aria-selected="false">
+    <li class="nav-item m-1">
+      <a class="nav-link" id="archaelogicaldata-tab" data-toggle="tab" href="#archaelogicaldata">
         Archaelogical data
       </a>
     </li>
   {% endif %}
-  {% if site.culticPhenomena or site.culticPhenomenaKeywords is not empty %}
-    <li class="nav-item">
-      <a class="nav-link" id="culticphenomena-tab" data-toggle="tab" href="#culticphenomena" role="tab" aria-controls="culticphenomena" aria-selected="false">
+  {% if site.environmentalContext %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="environmentalcontext-tab" data-toggle="tab" href="#environmentalcontext">
+        Environmental context
+      </a>
+    </li>
+  {% endif %}
+  {% if site.memorialFunctions %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="memorialfunctions-tab" data-toggle="tab" href="#memorialfunctions">
+        Memorial functions
+      </a>
+    </li>
+  {% endif %}
+  {% if site.liturgicalHabits %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="liturgicalhabits-tab" data-toggle="tab" href="#liturgicalhabits">
+        Liturgical habits
+      </a>
+    </li>
+  {% endif %}
+  {% if site.culticPhenomena %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="culticphenomena-tab" data-toggle="tab" href="#culticphenomena">
         Cultic phenomena
       </a>
     </li>
   {% endif %}
-  {% if site.historicalSources is not empty or site.literatures is not empty %}
-    <li class="nav-item">
-      <a class="nav-link" id="historicalsourcesliterature-tab" data-toggle="tab" href="#historicalsourcesliterature" role="tab" aria-controls="historicalsourcesliterature" aria-selected="false">
-        Historical sources & Literature
+  {% if site.additionalData %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="additionaldata-tab" data-toggle="tab" href="#additionaldata">
+        Additional data
+      </a>
+    </li>
+  {% endif %}
+  {% if site.historicalSources is not empty %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="historicalsources-tab" data-toggle="tab" href="#historicalsources">
+        Historical sources
+      </a>
+    </li>
+  {% endif %}
+  {% if site.literatures is not empty %}
+    <li class="nav-item m-1">
+      <a class="nav-link" id="literature-tab" data-toggle="tab" href="#literature">
+        Literature
       </a>
     </li>
   {% endif %}

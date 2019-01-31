@@ -1,0 +1,12 @@
+<div class="modal fade modal-image" id="modal{{ element.id }}" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <img class="img-fluid" src="{{ vich_uploader_asset(element, 'imageFile') | imagine_filter('site_full') }}" alt="" >
+      </div>
+      <div class="modal-footer justify-content-center">
+        <p>{{ element.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>

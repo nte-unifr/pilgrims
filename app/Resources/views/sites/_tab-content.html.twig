@@ -1,23 +1,32 @@
-<div class="tab-content card p-4" id="siteTabContent">
-  <div class="tab-pane fade show active" id="sources" role="tabpanel" aria-labelledby="sources-tab">
+<div class="tab-content card p-4">
+  <div class="tab-pane fade show active" id="sources">
     {% include 'sites/_tab-sources.html.twig' %}
   </div>
-  <div class="tab-pane fade" id="history" role="tabpanel" aria-labelledby="history-tab">
+  <div class="tab-pane fade enable-blockquote" id="history">
     {{ site.history | markdown }}
   </div>
-  <div class="tab-pane fade" id="archaelogicaldata" role="tabpanel" aria-labelledby="archaelogicaldata-tab">
+  <div class="tab-pane fade enable-blockquote" id="archaelogicaldata">
     {{ site.archaeologicalData | markdown }}
   </div>
-  <div class="tab-pane fade" id="culticphenomena" role="tabpanel" aria-labelledby="culticphenomena-tab">
-    <p>
-      {% for keyword in site.culticPhenomenaKeywords %}
-        <span class="badge badge-light"><i class="fas fa-tag"></i> {{ keyword.title }}</span>
-      {% endfor %}
-    </p>
+  <div class="tab-pane fade enable-blockquote" id="environmentalcontext">
+    {{ site.environmentalContext | markdown }}
+  </div>
+  <div class="tab-pane fade enable-blockquote" id="memorialfunctions">
+    {{ site.memorialFunctions | markdown }}
+  </div>
+  <div class="tab-pane fade enable-blockquote" id="liturgicalhabits">
+    {{ site.liturgicalHabits | markdown }}
+  </div>
+  <div class="tab-pane fade enable-blockquote" id="culticphenomena">
     {{ site.culticPhenomena | markdown }}
   </div>
-  <div class="tab-pane fade" id="historicalsourcesliterature" role="tabpanel" aria-labelledby="historicalsourcesliterature-tab">
+  <div class="tab-pane fade enable-blockquote" id="additionaldata">
+    {{ site.additionalData | markdown }}
+  </div>
+  <div class="tab-pane fade" id="historicalsources">
     {% include '_shared/list-group.html.twig' with { 'elements': site.historicalSources, 'title': 'Historical sources'} %}
+  </div>
+  <div class="tab-pane fade" id="literature">
     {% include '_shared/list-group.html.twig' with { 'elements': site.literatures, 'title': 'Literature'} %}
   </div>
 </div>

@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ site.title }}{% endblock %}
-{% block sites_active %}active{% endblock %}
+
+{% block navbar_sub %}
+  <div class="navbar-nav d-none d-md-flex">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('sites_index') }}">Sites</a>
+    </li>
+    <span class="navbar-text">
+      / #{{ site.id }}
+    </span>
+  </div>
+{% endblock %}
 
 {% block body %}
   <div id="site">
+    <h1 class="h2 mb-4">
+      {{ site.title }}
+      <small class="text-muted">{{ site.historicalNames | markdown }}</small>
+    </h1>
+    <a href="#" class="btn btn-light btn-block my-4 d-md-none"><i class="fas fa-arrow-circle-left"></i> Back to list of sites</a>
     <div class="row">
-      <div class="col-4">
+      <div class="col-12 col-md-4 mb-4">
         {% include 'sites/_side.html.twig' %}
       </div>
-      <div class="col-8">
-        <h1 class="h2 mb-4">
-          {{ site.title }}
-          <small class="text-muted">{{ site.historicalNames | markdown }}</small>
-        </h1>
-        {% include 'sites/_nav-tabs.html.twig' %}
-        {% include 'sites/_tab-content.html.twig' %}
-      </div>
+      {% if site.sources is not empty or site.sourcesQuotation or site.history or site.archaeologicalData or site.environmentalContext or site.memorialFunctions or site.liturgicalHabits or site.culticPhenomena or site.additionalData or site.historicalSources is not empty or site.literatures is not empty %}
+        <div class="col-12 col-md-8">
+          {% include 'sites/_nav-tabs.html.twig' %}
+          {% include 'sites/_tab-content.html.twig' %}
+        </div>
+      {% endif %}
     </div>
+    <a href="#" class="btn btn-light btn-block my-4 d-md-none"><i class="fas fa-arrow-circle-left"></i> Back to list of sites</a>
   </div>
 {% endblock %}

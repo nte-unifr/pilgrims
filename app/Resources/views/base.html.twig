@@ -19,7 +19,7 @@
   </head>
   <body class="d-flex flex-column">
 
-    {% include '_navbar.html.twig' with { sites_active: block('sites_active') } %}
+    {% include '_navbar.html.twig' with { navbar_sub: block('navbar_sub') } %}
 
     <div id="container-nte" class="container-fluid flex-grow px-md-5">
       {% block body %}{% endblock %}

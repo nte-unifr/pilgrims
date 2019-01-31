@@ -25,6 +25,12 @@ body {
       text-decoration: none;
     }
   }
+  .nav-link {
+    color: $blue;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   #languageDropdown i {
     font-size: 25px;
   }

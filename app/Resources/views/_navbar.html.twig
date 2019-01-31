@@ -7,10 +7,8 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <div class="navbar-nav mr-auto">
-      <a class="nav-item nav-link {{ sites_active }}" href="{{ path('sites_index') }}">Sites</a>
-    </div>
-    <div class="navbar-nav">
+    {{ navbar_sub | raw }}
+    <div class="navbar-nav ml-auto">
       <a class="nav-item nav-link" href="//lettres.unifr.ch/fr/hist/histoire-de-lart-et-musicologie.html">Contact <i class="fal fa-external-link-square-alt"></i></a>
     </div>
   </div>

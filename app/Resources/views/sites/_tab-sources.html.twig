@@ -1,30 +1,21 @@
 {% if site.sources %}
-  <div class="card mb-2">
-    <div class="card-header d-flex justify-content-between align-items-center">
-      Sources <span class="badge badge-pill badge-primary">{{ site.sources | length }}</span>
-    </div>
-    <div class="list-group list-group-flush">
-      {% for source in site.sources %}
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <blockquote class="blockquote mb-0">
-            <p class="mb-0">{{ source.title }}</p>
-            <footer class="blockquote-footer">{{ source.year }}, {{ source.traveler }}</footer>
-          </blockquote>
-          <button type="button" class="btn btn-primary btn-sm popover-toggler" data-toggler="popover" data-content="{{ source.editions | markdown }}" data-html="true" title="Editions">
-            <i class="fas fa-books"></i> ED
-          </button>
-        </li>
-      {% endfor %}
-    </div>
+  <div class="list-group list-group-flush mb-5">
+    {% for source in site.sources %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <blockquote class="blockquote mb-0">
+          <p class="mb-0">{{ source.title }}</p>
+          <footer class="blockquote-footer">{{ source.year }}, {{ source.traveler }}</footer>
+        </blockquote>
+        <button type="button" class="btn btn-primary btn-sm popover-toggler" data-toggler="popover" data-content="{{ source.editions | markdown | e }}" data-html="true" title="Editions">
+          <i class="fas fa-books"></i> ED
+        </button>
+      </li>
+    {% endfor %}
   </div>
 {% endif %}
 {% if site.sourcesQuotation %}
-  <div class="card mb-2 quotes">
-    <div class="card-header">
-      Quotes
-    </div>
-    <div class="card-body">
-      {{ site.sourcesQuotation | markdown }}
-    </div>
+  <div class="enable-blockquote">
+    <h3 class="mb-4">Quotes</h3>
+    {{ site.sourcesQuotation | markdown }}
   </div>
 {% endif %}

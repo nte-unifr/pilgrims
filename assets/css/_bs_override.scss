@@ -22,3 +22,15 @@
 a.card {
   text-decoration: none;
 }
+
+.modal-image {
+  .modal-content {
+    height: 80%;
+    .modal-body {
+      max-height: calc(100vh - 135px);
+      .img-fluid {
+        height: 100%;
+      }
+    }
+  }
+}
