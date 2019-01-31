@@ -19,7 +19,6 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
-            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new Liip\ImagineBundle\LiipImagineBundle(),
             new Knp\Bundle\MarkdownBundle\KnpMarkdownBundle(),
         );
