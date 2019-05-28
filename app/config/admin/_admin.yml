@@ -23,3 +23,5 @@ easy_admin:
       - { entity: 'Country', icon: 'globe', label: 'Countries' }
       - { entity: 'Region', icon: 'map-marker', label: 'Regions' }
       - { entity: 'Location', icon: 'map-pin', label: 'Locations' }
+      - { label: 'Others' }
+      - { entity: 'Page', icon: 'file-text', label: 'Pages' }

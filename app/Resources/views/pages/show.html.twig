@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
+{% block navbar_sub %}
+  
+{% endblock %}
+
+{% block body %}
+  <div class="container">
+    <div id="page">
+      <h1 class="h2 mb-4">
+        {{ page.title }}
+      </h1>
+      <div>
+        {{ page.content | markdown }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
