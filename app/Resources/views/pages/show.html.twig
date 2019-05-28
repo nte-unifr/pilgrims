@@ -3,7 +3,11 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block navbar_sub %}
-  
+  <div class="navbar-nav d-none d-md-flex">
+    <li class="nav-item">
+      <a class="nav-link" href="{{ path('sites_index') }}">Sites</a>
+    </li>
+  </div>
 {% endblock %}
 
 {% block body %}
